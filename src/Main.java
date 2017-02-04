@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,9 +33,14 @@ public class Main {
             .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
             .add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
             .build();
+    private static Headers headers2 = new Headers.Builder()
+            .add("Cookie", "__remember_me=true; MUSIC_U=5f9d910d66cb2440037d1c68e6972ebb9f15308b56bfeaa4545d34fbabf71e0f36b9357ab7f474595690d369e01fbb9741049cea1c6bb9b6; __csrf=8ea789fbbf78b50e6b64b5ebbb786176; os=uwp; osver=10.0.10586.318; appver=1.2.1; deviceId=0e4f13d2d2ccbbf31806327bd4724043")
+            .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
+            .add("User-Agent", "NativeHost")
+            .build();
 
     public static void main(String[] args) throws IOException {
-        search("why", 1, 20);
+        search("sugar free", 1, 5);
 
     }
 
@@ -65,6 +71,35 @@ public class Main {
         return "";
     }
 
+    private static String GetHtmlContent(String url) throws IOException {
+        Request request = new Request.Builder().url(url).get().headers(headers).build();
+        Response execute = client.newCall(request).execute();
+        if (execute.isSuccessful()) {
+            return execute.body().string();
+        }
+        return "";
+    }
+
+    private static String GetHtmlContentNative(String url) throws IOException {
+        Request request = new Request.Builder().url(url).get().headers(headers2).build();
+        Response execute = client.newCall(request).execute();
+        if (execute.isSuccessful()) {
+            return execute.body().string();
+        }
+        return "";
+    }
+
+    private static String GetPic(String id) {
+        String html = null;
+        try {
+            html = GetHtmlContent("http://music.163.com/api/song/detail/?ids=%5B" + id + "%5D");
+            NeteasePic neteasePic = JSON.parseObject(html, NeteasePic.class);
+            return neteasePic.getSongs().get(0).getAlbum().getBlurPicUrl();
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
     private static List<SongResult> GetListByJson(List<NeteaseDatas.ResultBean.SongsBean> songs) throws IOException {
         List<SongResult> list = new ArrayList<>();
         int len = songs.size();
@@ -78,78 +113,74 @@ public class Main {
             int arLen = ar.size();
             String artistName = "";
             for (int j = 0; j < arLen; j++) {
-                    artistName = artistName + ar.get(j).getName() + "/";
+                artistName = artistName + ar.get(j).getName() + "/";
             }
-            artistName = artistName.substring(0,artistName.length()-1);
+            artistName = artistName.substring(0, artistName.length() - 1);
             String SongId = String.valueOf(songsBean.getId());
             String SongName = songsBean.getName();
-            String SongSubName = String.valueOf(songsBean.getAlia());
+
             String Songlink = "http://music.163.com/#/song?id=" + String.valueOf(songsBean.getId());
             String ArtistId = String.valueOf(ar.get(0).getId());
-            String ArtistSubName = "";
+
             String AlbumId = String.valueOf(songsBean.getAl().getId());
             String AlbumName = songsBean.getAl().getName();
-            String AlbumSubName = "";
+
             String AlbumArtist = ar.get(0).getName();
             songResult.setArtistName(artistName);
             songResult.setArtistId(ArtistId);
             songResult.setSongId(SongId);
             songResult.setSongName(SongName);
-            songResult.setSongSubName(SongSubName);
             songResult.setSongLink(Songlink);
-            songResult.setArtistSubName(ArtistSubName);
             songResult.setAlbumId(AlbumId);
             songResult.setAlbumName(AlbumName);
-            songResult.setAlbumSubName(AlbumSubName);
             String MvId = String.valueOf(songsBean.getMv());
             songResult.setMvId(MvId);
-
-            songResult.setMvHdUrl("");
-            songResult.setMvLdUrl("");
-            songResult.setLanguage("");
+            if (Integer.valueOf(MvId) != 0) {
+                songResult.setMvHdUrl(GetMvUrl(MvId, "hd"));
+                songResult.setMvLdUrl(GetMvUrl(MvId, "ld"));
+            }
             songResult.setLength("");
-            songResult.setCompany("");
-            songResult.setYear("");
-            songResult.setDisc("");
-            songResult.setTrackNum("");
             songResult.setType("wy");
-            songResult.setPicUrl("");
-            songResult.setLrcUrl("");
-            songResult.setTrcUrl("");
-            songResult.setKrcUrl("");
-
-
+            songResult.setPicUrl(GetPic(SongId));
+            songResult.setLrcUrl(GetLrcUrl(SongId));
             System.out.println(AlbumArtist);
             int maxbr = songsBean.getPrivilege().getMaxbr();
             System.out.println(maxbr + "   ....");
             if (maxbr == 999000) {
-                songResult.setBitRate("无损");
-                songResult.setFlacUrl(GetPlayUrl(SongId, "999000"));
+                String flac = GetPlayUrl(SongId, "999000");
+                if (!flac.contains(".mp3")) {
+                    songResult.setBitRate("无损");
+                    songResult.setFlacUrl(flac);
+                } else {
+                    songResult.setFlacUrl("");
+                    songResult.setBitRate("320K");
+                }
+
                 songResult.setSqUrl(GetPlayUrl(SongId, "320000"));
                 songResult.setHqUrl(GetPlayUrl(SongId, "192000"));
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-                songResult.setCopyUrl(songResult.getSqUrl());
+
             } else if (maxbr == 320000) {
                 songResult.setBitRate("320K");
                 songResult.setFlacUrl("");
                 songResult.setSqUrl(GetPlayUrl(SongId, "320000"));
                 songResult.setHqUrl(GetPlayUrl(SongId, "192000"));
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-                songResult.setCopyUrl(songResult.getSqUrl());
+
             } else if (maxbr == 192000) {
                 songResult.setBitRate("192K");
                 songResult.setFlacUrl("");
                 songResult.setSqUrl("");
                 songResult.setHqUrl(GetPlayUrl(SongId, "192000"));
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-                songResult.setCopyUrl(songResult.getHqUrl());
+
             } else {
                 songResult.setBitRate("128K");
                 songResult.setFlacUrl("");
                 songResult.setSqUrl("");
                 songResult.setHqUrl("");
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-                songResult.setCopyUrl(songResult.getLqUrl());
+
             }
             if (songsBean.getFee() == 4 || songsBean.getPrivilege().getSt() != 0) {
                 if (songResult.getBitRate().equals("无损")) {
@@ -173,9 +204,120 @@ public class Main {
         return list;
     }
 
-    private static String GetPlayUrl(String id, String quality) throws IOException {
+    private static String GetLrc(String sid) {
+        String url = "http://music.163.com/api/song/lyric?os=pc&id=" + sid + "&lv=-1&kv=-1&tv=-1";
+        String html = null;
+        try {
+            html = GetHtmlContent(url);
+            if (html.contains("uncollected")) {
+                return null;
+            }
+            return JSON.parseObject(html, NeteaseLrc.class).getLrc().getLyric();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    private static String GetLrcUrl(String sid) {
+        String url = "http://music.163.com/api/song/lyric?os=pc&id=" + sid + "&lv=-1&kv=-1&tv=-1";
+        String html = null;
+        try {
+            html = GetHtmlContent(url);
+            if (html.contains("uncollected")) {
+                return "";
+            }
+            return url;
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    private static String GetMvUrl(String mid, String quality) {
+        String url = "http://music.163.com/api/song/mv?id=" + mid + "&type=mp4";
+        String html = null;
+        try {
+            html = GetHtmlContentNative(url);
+            NeteaseMv neteaseMv = JSON.parseObject(html, NeteaseMv.class);
+            int len = neteaseMv.getMvs().size();
+            HashMap<Integer, String> map = new HashMap<>();
+            int max = 0;
+            for (int i = 0; i < len; i++) {
+                NeteaseMv.MvsBean mvsBean = neteaseMv.getMvs().get(i);
+                int br = mvsBean.getBr();
+                if (br > max) {
+                    max = br;
+                }
+                map.put(br, mvsBean.getMvurl());
+            }
+            if (!quality.equals("ld")) {
+                return map.get(max);
+            }
+            switch (max) {
+                case 1080:
+                    return map.get(720);
+                case 720:
+                    return map.get(480);
+                case 480:
+                    return map.containsKey(320) ? map.get(320) : map.get(240);
+                default:
+                    return map.get(240);
+            }
+        } catch (Exception e) {
+            return "";
+        }
+
+    }
+
+//    private static String GetUrl(String id, String quality, String format)
+//    {
+//        String text = "";
+//        switch (format.toLowerCase())
+//        {
+//            case "mp3":
+//                if (quality == "320")
+//                {
+//                    text = GetPlayUrl(id, "320000");
+//                }
+//                else if (quality == "160")
+//                {
+//                    text = GetPlayUrl(id, "192000");
+//                }
+//                else
+//                {
+//                    text = GetPlayUrl(id, "128000");
+//                }
+//                break;
+//            case "flac":
+//                text = GetPlayUrl(id, "999000");
+//                break;
+//            case "mp4":
+//                text = GetMvUrl(id, quality.ToLower());
+//                break;
+//            case "lrc":
+//                text = GetLrc(id);
+//                break;
+//            case "krc":
+//                text = GetLrc(id, format.ToLower());
+//                break;
+//            case "trc":
+//                text = GetLrc(id, format.ToLower());
+//                break;
+//            case "jpg":
+//                text = GetPic(id);
+//                break;
+//        }
+//        return text;
+//    }
+
+    private static String GetPlayUrl(String id, String quality) {
         String text = "{\"ids\":[\"" + id + "\"],\"br\":" + quality + ",\"csrf_token\":\"\"}";
-        String html = GetEncHtml("http://music.163.com/weapi/song/enhance/player/url?csrf_token=", text);
+        String html = null;
+        try {
+            html = GetEncHtml("http://music.163.com/weapi/song/enhance/player/url?csrf_token=", text);
+            System.out.println(html);
+        } catch (IOException e) {
+
+        }
         if (html.isEmpty()) {
             return null;
         }

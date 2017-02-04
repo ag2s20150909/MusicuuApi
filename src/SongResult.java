@@ -147,14 +147,6 @@ public class SongResult {
         SongName = songName;
     }
 
-    public String getSongSubName() {
-        return SongSubName;
-    }
-
-    public void setSongSubName(String songSubName) {
-        SongSubName = songSubName;
-    }
-
     public String getArtistId() {
         return ArtistId;
     }
@@ -169,14 +161,6 @@ public class SongResult {
 
     public void setArtistName(String artistName) {
         ArtistName = artistName;
-    }
-
-    public String getArtistSubName() {
-        return ArtistSubName;
-    }
-
-    public void setArtistSubName(String artistSubName) {
-        ArtistSubName = artistSubName;
     }
 
     public String getAlbumId() {
@@ -195,22 +179,6 @@ public class SongResult {
         AlbumName = albumName;
     }
 
-    public String getAlbumSubName() {
-        return AlbumSubName;
-    }
-
-    public void setAlbumSubName(String albumSubName) {
-        AlbumSubName = albumSubName;
-    }
-
-    public String getAlbumArtist() {
-        return AlbumArtist;
-    }
-
-    public void setAlbumArtist(String albumArtist) {
-        AlbumArtist = albumArtist;
-    }
-
     public String getSongLink() {
         return SongLink;
     }
@@ -227,13 +195,6 @@ public class SongResult {
         Length = length;
     }
 
-    public String getSize() {
-        return Size;
-    }
-
-    public void setSize(String size) {
-        Size = size;
-    }
 
     public String getBitRate() {
         return BitRate;
@@ -250,22 +211,6 @@ public class SongResult {
     public void setFlacUrl(String flacUrl) {
 
         FlacUrl = flacUrl;
-    }
-
-    public String getApeUrl() {
-        return ApeUrl;
-    }
-
-    public void setApeUrl(String apeUrl) {
-        ApeUrl = apeUrl;
-    }
-
-    public String getWavUrl() {
-        return WavUrl;
-    }
-
-    public void setWavUrl(String wavUrl) {
-        WavUrl = wavUrl;
     }
 
     public String getSqUrl() {
@@ -295,14 +240,6 @@ public class SongResult {
         LqUrl = lqUrl;
     }
 
-    public String getCopyUrl() {
-        return CopyUrl;
-    }
-
-    public void setCopyUrl(String copyUrl) {
-        CopyUrl = copyUrl;
-    }
-
     public String getPicUrl() {
         return PicUrl;
     }
@@ -317,26 +254,6 @@ public class SongResult {
 
     public void setLrcUrl(String lrcUrl) {
         LrcUrl = lrcUrl;
-    }
-
-    public String getTrcUrl() {
-        return TrcUrl;
-    }
-
-    public void setTrcUrl(String trcUrl) {
-        TrcUrl = trcUrl;
-    }
-
-    public String getKrcUrl() {
-        return KrcUrl;
-    }
-
-    public void setKrcUrl(String krcUrl) {
-        KrcUrl = krcUrl;
-    }
-
-    public String getMvId() {
-        return MvId;
     }
 
     public void setMvId(String mvId) {
@@ -357,46 +274,6 @@ public class SongResult {
 
     public void setMvLdUrl(String mvLdUrl) {
         MvLdUrl = mvLdUrl;
-    }
-
-    public String getLanguage() {
-        return Language;
-    }
-
-    public void setLanguage(String language) {
-        Language = language;
-    }
-
-    public String getCompany() {
-        return Company;
-    }
-
-    public void setCompany(String company) {
-        Company = company;
-    }
-
-    public String getYear() {
-        return Year;
-    }
-
-    public void setYear(String year) {
-        Year = year;
-    }
-
-    public String getDisc() {
-        return Disc;
-    }
-
-    public void setDisc(String disc) {
-        Disc = disc;
-    }
-
-    public String getTrackNum() {
-        return TrackNum;
-    }
-
-    public void setTrackNum(String trackNum) {
-        TrackNum = trackNum;
     }
 
     public String getType() {
