@@ -206,6 +206,10 @@ public class SongResult {
         LrcUrl = lrcUrl;
     }
 
+    public String getMvId(){
+        return MvId;
+    }
+
     public void setMvId(String mvId) {
         MvId = mvId;
     }

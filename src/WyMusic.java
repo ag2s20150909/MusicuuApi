@@ -13,22 +13,35 @@ import java.util.List;
 public class WyMusic implements IMusic {
 
 
-    private static List<SongResult> search(String key, int page, int size) throws Exception {
-        String text = "{\"s\":\"" + key + "\",\"type\":1,\"offset\":" + (page - 1) * size + ",\"limit\":" + size + ",\"total\":true}";
-        String s = NetUtil.GetEncHtml("http://music.163.com/weapi/cloudsearch/get/web?csrf_token=", text);
-//        System.out.println(s);
-        NeteaseDatas neteaseDatas = JSON.parseObject(s, NeteaseDatas.class);
-        List<NeteaseDatas.ResultBean.SongsBean> songs = neteaseDatas.getResult().getSongs();
-        System.out.println(JSON.toJSONString(songs));
-        List<SongResult> songResults = GetListByJson(songs);
-        return songResults;
+    private static List<SongResult> search(String key, int page, int size) {
+
+        try {
+            String text = "{\"s\":\"" + key + "\",\"type\":1,\"offset\":" + (page - 1) * size + ",\"limit\":" + size + ",\"total\":true}";
+            String s = NetUtil.GetEncHtml("http://music.163.com/weapi/cloudsearch/get/web?csrf_token=", text, true);
+            NeteaseDatas neteaseDatas = JSON.parseObject(s, NeteaseDatas.class);
+            if (neteaseDatas == null) {
+                return null;//搜索失败
+            }
+            int totalsize = neteaseDatas.getResult().getSongCount(); //歌曲总数量
+            List<NeteaseDatas.ResultBean.SongsBean> songs = neteaseDatas.getResult().getSongs();
+            System.out.println(JSON.toJSONString(songs));
+            List<SongResult> songResults = null;
+            songResults = GetListByJson(songs);
+            if (songResults == null || songResults.size() <= 0) {
+                return null;//没有找到符合的歌曲
+            }
+
+            return songResults;
+        } catch (Exception e) {
+            return null;//解析歌曲错误
+        }
     }
 
     //获取封面
     private static String GetPic(String id) {
         String html = null;
         try {
-            html = NetUtil.GetHtmlContent("http://music.163.com/api/song/detail/?ids=%5B" + id + "%5D");
+            html = NetUtil.GetHtmlContent("http://music.163.com/api/song/detail/?ids=%5B" + id + "%5D", true);
             NeteasePic neteasePic = JSON.parseObject(html, NeteasePic.class);
             return neteasePic.getSongs().get(0).getAlbum().getBlurPicUrl();
         } catch (Exception e) {
@@ -46,6 +59,7 @@ public class WyMusic implements IMusic {
         }
         for (int i = 0; i < len; i++) {
             SongResult songResult = new SongResult();
+            NetUtil.init(songResult);
             NeteaseDatas.ResultBean.SongsBean songsBean = songs.get(i);
             List<NeteaseDatas.ResultBean.SongsBean.ArBean> ar = songsBean.getAr();
             int arLen = ar.size();
@@ -56,7 +70,6 @@ public class WyMusic implements IMusic {
             artistName = artistName.substring(0, artistName.length() - 1);
             String SongId = String.valueOf(songsBean.getId());
             String SongName = songsBean.getName();
-
             String Songlink = "http://music.163.com/#/song?id=" + String.valueOf(songsBean.getId());
             String ArtistId = String.valueOf(ar.get(0).getId());
             String AlbumId = String.valueOf(songsBean.getAl().getId());
@@ -85,40 +98,28 @@ public class WyMusic implements IMusic {
                     songResult.setBitRate("无损");
                     songResult.setFlacUrl(flac);
                 } else {
-                    songResult.setFlacUrl("");
                     songResult.setBitRate("320K");
                 }
-
                 songResult.setSqUrl(GetPlayUrl(SongId, "320000"));
                 songResult.setHqUrl(GetPlayUrl(SongId, "192000"));
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-
             } else if (maxbr == 320000) {
                 songResult.setBitRate("320K");
-                songResult.setFlacUrl("");
                 songResult.setSqUrl(GetPlayUrl(SongId, "320000"));
                 songResult.setHqUrl(GetPlayUrl(SongId, "192000"));
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
 
             } else if (maxbr == 192000) {
                 songResult.setBitRate("192K");
-                songResult.setFlacUrl("");
-                songResult.setSqUrl("");
                 songResult.setHqUrl(GetPlayUrl(SongId, "192000"));
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-
             } else {
                 songResult.setBitRate("128K");
-                songResult.setFlacUrl("");
-                songResult.setSqUrl("");
-                songResult.setHqUrl("");
                 songResult.setLqUrl(GetPlayUrl(SongId, "128000"));
-
             }
             if (songsBean.getFee() == 4 || songsBean.getPrivilege().getSt() != 0) {
                 if (songResult.getBitRate().equals("无损")) {
                     songResult.setBitRate("320K");
-                    songResult.setFlacUrl("");
                 }
             }
             list.add(songResult);
@@ -159,31 +160,21 @@ public class WyMusic implements IMusic {
     //解析lrc歌词
     private static String GetLrc(String sid) {
         String url = "http://music.163.com/api/song/lyric?os=pc&id=" + sid + "&lv=-1&kv=-1&tv=-1";
-        String html = null;
-        try {
-            html = NetUtil.GetHtmlContent(url);
-            if (html.contains("uncollected")) {
-                return null;
-            }
-            return JSON.parseObject(html, NeteaseLrc.class).getLrc().getLyric();
-        } catch (Exception e) {
-            return "";
+        String html = NetUtil.GetHtmlContent(url, true);
+        if (html.contains("uncollected")) {
+            return null;
         }
+        return JSON.parseObject(html, NeteaseLrc.class).getLrc().getLyric();
     }
 
     //获取lrc歌词
     private static String GetLrcUrl(String sid) {
         String url = "http://music.163.com/api/song/lyric?os=pc&id=" + sid + "&lv=-1&kv=-1&tv=-1";
-        String html = null;
-        try {
-            html = NetUtil.GetHtmlContent(url);
-            if (html.contains("uncollected")) {
-                return "";
-            }
-            return url;
-        } catch (Exception e) {
+        String html = NetUtil.GetHtmlContent(url, true);
+        if (html.contains("uncollected")) {
             return "";
         }
+        return url;
     }
 
     //获取mv地址
@@ -191,7 +182,7 @@ public class WyMusic implements IMusic {
         String url = "http://music.163.com/api/song/mv?id=" + mid + "&type=mp4";
         String html = null;
         try {
-            html = NetUtil.GetHtmlContent(url);
+            html = NetUtil.GetHtmlContent(url, true);
             NeteaseMv neteaseMv = JSON.parseObject(html, NeteaseMv.class);
             int len = neteaseMv.getMvs().size();
             HashMap<Integer, String> map = new HashMap<>();
@@ -228,7 +219,7 @@ public class WyMusic implements IMusic {
         String text = "{\"ids\":[\"" + id + "\"],\"br\":" + quality + ",\"csrf_token\":\"\"}";
         String html = null;
         try {
-            html = NetUtil.GetEncHtml("http://music.163.com/weapi/song/enhance/player/url?csrf_token=", text);
+            html = NetUtil.GetEncHtml("http://music.163.com/weapi/song/enhance/player/url?csrf_token=", text, true);
             NeteaseSongUrl neteaseSongUrl = JSON.parseObject(html, NeteaseSongUrl.class);
             if (neteaseSongUrl.getData().get(0).getCode() == 200) {
                 return neteaseSongUrl.getData().get(0).getUrl();
@@ -245,7 +236,7 @@ public class WyMusic implements IMusic {
     public static String GetLostPlayUrl(String id, String quality) {
         String albumId = GetLostAlbumId(id);
         try {
-            String s = NetUtil.GetHtmlContent("http://music.163.com/api/album/" + albumId);
+            String s = NetUtil.GetHtmlContent("http://music.163.com/api/album/" + albumId, true);
             NeteaseLostSong neteaseLostSong = JSON.parseObject(s, NeteaseLostSong.class);
             List<NeteaseLostSong.AlbumBeanX.SongsBean> songs = neteaseLostSong.getAlbum().getSongs();
             int size = songs.size();
@@ -313,10 +304,6 @@ public class WyMusic implements IMusic {
 
     @Override
     public List<SongResult> SongSearch(String key, int page, int size) {
-        try {
-            return search(key, page, size);
-        } catch (Exception e) {
-            return null;
-        }
+        return search(key, page, size);
     }
 }

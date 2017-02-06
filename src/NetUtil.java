@@ -19,7 +19,6 @@ public class NetUtil {
     private static OkHttpClient client = new OkHttpClient();
     private static MediaType Content_Type = MediaType.parse("application/x-www-form-urlencoded");
     private static Headers headers = new Headers.Builder()
-            .add("Cookie", "__remember_me=true; MUSIC_U=5f9d910d66cb2440037d1c68e6972ebb9f15308b56bfeaa4545d34fbabf71e0f36b9357ab7f474595690d369e01fbb9741049cea1c6bb9b6; __csrf=8ea789fbbf78b50e6b64b5ebbb786176; os=uwp; osver=10.0.10586.318; appver=1.2.1; deviceId=0e4f13d2d2ccbbf31806327bd4724043")
             .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
             .add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
             .build();
@@ -31,11 +30,15 @@ public class NetUtil {
     final static private String nonce = "0CoJUm6Qyw8W8jud";
     final static private String pubKey = "010001";
 
-    public static String GetEncHtml(String url, String text) {
+    public static String GetEncHtml(String url, String text, boolean needCookie) {
 
         String param = encryptedRequest(text);
         RequestBody requestBody = RequestBody.create(Content_Type, param);
-        Request request = new Request.Builder().url(url).post(requestBody).headers(headers).build();
+        Request.Builder builder = new Request.Builder().url(url).post(requestBody).headers(headers);
+        if (needCookie) {
+            builder.addHeader("Cookie", "__remember_me=true; MUSIC_U=5f9d910d66cb2440037d1c68e6972ebb9f15308b56bfeaa4545d34fbabf71e0f36b9357ab7f474595690d369e01fbb9741049cea1c6bb9b6; __csrf=8ea789fbbf78b50e6b64b5ebbb786176; os=uwp; osver=10.0.10586.318; appver=1.2.1; deviceId=0e4f13d2d2ccbbf31806327bd4724043");
+        }
+        Request request = builder.build();
         Response execute = null;
         try {
             execute = client.newCall(request).execute();
@@ -49,30 +52,43 @@ public class NetUtil {
         return "";
     }
 
-    public static String GetHtmlContent(String url) throws IOException {
-        Request request = new Request.Builder().url(url).get().headers(headers).build();
-        Response execute = client.newCall(request).execute();
-        if (execute.isSuccessful()) {
-            return execute.body().string();
+    public static String GetHtmlContent(String url, boolean needCookie) {
+        try {
+            Request.Builder builder = new Request.Builder().url(url).get().headers(headers);
+            if (needCookie) {
+                builder.addHeader("Cookie", "__remember_me=true; MUSIC_U=5f9d910d66cb2440037d1c68e6972ebb9f15308b56bfeaa4545d34fbabf71e0f36b9357ab7f474595690d369e01fbb9741049cea1c6bb9b6; __csrf=8ea789fbbf78b50e6b64b5ebbb786176; os=uwp; osver=10.0.10586.318; appver=1.2.1; deviceId=0e4f13d2d2ccbbf31806327bd4724043");
+            }
+            Request request = builder.build();
+            Response execute = client.newCall(request).execute();
+            if (execute.isSuccessful()) {
+                return execute.body().string();
+            }
+        } catch (Exception e) {
+
         }
         return "";
     }
 
-    public static String PostData(String url, HashMap<String, String> params) throws IOException {
-        FormBody.Builder build = new FormBody.Builder();
-        int len = params.size();
-        if (len <= 0) {
-            return "";
-        }
-        Set<String> keys = params.keySet();
-        for (String s : keys) {
-            build.add(s, params.get(s));
-        }
-        FormBody body = build.build();
-        Request request = new Request.Builder().url(url).post(body).headers(headers).build();
-        Response execute = client.newCall(request).execute();
-        if (execute.isSuccessful()) {
-            return execute.body().string();
+    public static String PostData(String url, HashMap<String, String> params) {
+
+        try {
+            FormBody.Builder build = new FormBody.Builder();
+            int len = params.size();
+            if (len <= 0) {
+                return "";
+            }
+            Set<String> keys = params.keySet();
+            for (String s : keys) {
+                build.add(s, params.get(s));
+            }
+            FormBody body = build.build();
+            Request request = new Request.Builder().url(url).post(body).headers(headers).build();
+            Response execute = client.newCall(request).execute();
+            if (execute.isSuccessful()) {
+                return execute.body().string();
+            }
+        } catch (Exception e) {
+
         }
         return "";
     }
@@ -127,5 +143,28 @@ public class NetUtil {
     //based on [darknessomi/musicbox](https://github.com/darknessomi/musicbox)
     private static String createSecretKey(int i) {
         return RandomStringUtils.random(i, "0123456789abcde");
+    }
+
+    public static void init(SongResult result) {
+        //初始化，方便反序列化
+        result.setLqUrl("");
+        result.setMvHdUrl("");
+        result.setMvLdUrl("");
+        result.setAlbumId("");
+        result.setAlbumName("");
+        result.setArtistId("");
+        result.setArtistName("");
+        result.setBitRate("");
+        result.setFlacUrl("");
+        result.setHqUrl("");
+        result.setLength("");
+        result.setLqUrl("");
+        result.setLrcUrl("");
+        result.setType("");
+        result.setPicUrl("");
+        result.setMvId("");
+        result.setSongLink("");
+        result.setSongId("");
+        result.setSongName("");
     }
 }
