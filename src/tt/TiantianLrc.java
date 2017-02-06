@@ -1,9 +1,9 @@
-package kg;
+package tt;
 
 /**
  * Created by qtfreet on 2017/2/6.
  */
-public class KugouLrc {
+public class TiantianLrc {
 
     /**
      * code : 1

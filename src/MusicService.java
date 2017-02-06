@@ -7,8 +7,8 @@ public class MusicService {
 
             case "wy":
                 return new WyMusic();
-            case "kg":
-                return new KgMusic();
+            case "tt":
+                return new TtMusic();
             case "qq":
                 return new TxMusic();
         }

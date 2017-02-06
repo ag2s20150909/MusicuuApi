@@ -157,6 +157,7 @@ public class NetUtil {
         result.setBitRate("128K");
         result.setFlacUrl("");
         result.setHqUrl("");
+        result.setSqUrl("");
         result.setLength("");
         result.setLqUrl("");
         result.setLrcUrl("");

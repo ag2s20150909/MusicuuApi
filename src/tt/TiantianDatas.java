@@ -1,11 +1,11 @@
-package kg;
+package tt;
 
 import java.util.List;
 
 /**
  * Created by qtfreet on 2017/2/6.
  */
-public class KugouDatas {
+public class TiantianDatas {
 
     /**
      * pageCount : 1923

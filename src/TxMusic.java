@@ -1,14 +1,13 @@
 import com.alibaba.fastjson.JSON;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
-import kg.KugouDatas;
 import tx.TencentDatas;
 import tx.TencentGetKey;
+import tx.TencentMvData;
+import tx.TencentMvKey;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by qtfreet on 2017/2/6.
@@ -21,7 +20,6 @@ public class TxMusic implements IMusic {
             return null;//获取信息失败
         }
         html = html.substring(0, html.length() - 1).replace("callback(", "");
-        System.out.println(html);
         TencentDatas tencentDatas = JSON.parseObject(html, TencentDatas.class);
         TencentDatas.DataBean.SongBean songs = tencentDatas.getData().getSong();
         int totalsize = songs.getTotalnum();
@@ -31,7 +29,7 @@ public class TxMusic implements IMusic {
         List<TencentDatas.DataBean.SongBean.ListBean> list = songs.getList();
 
         return GetListByJson(list);
-//        KugouDatas kugouDatas = JSON.parseObject(s, KugouDatas.class);
+//        TiantianDatas kugouDatas = JSON.parseObject(s, TiantianDatas.class);
 //        if (kugouDatas == null) {
 //            return null;//搜索歌曲失败
 //        }
@@ -39,7 +37,7 @@ public class TxMusic implements IMusic {
 //            return null;//没有搜到歌曲
 //        }
 //        int totalsize = kugouDatas.getTotalCount();
-//        List<KugouDatas.DataBean> data = kugouDatas.getData();
+//        List<TiantianDatas.DataBean> data = kugouDatas.getData();
 //        List<SongResult> songResults = GetListByJson(data);
 //
 //        return songResults;
@@ -71,31 +69,52 @@ public class TxMusic implements IMusic {
             songResult.setSongLink(Songlink);
             songResult.setAlbumId(AlbumId);
             songResult.setAlbumName(AlbumName);
+            String mvId = songsBean.getVid();
+            if (!mvId.isEmpty()) {
+                songResult.setMvId(mvId);
+                String hdMvUrl = GetMvUrl(songsBean.getVid(), "hd");
+                songResult.setMvHdUrl(hdMvUrl);
+                String ldMvUrl = GetMvUrl(songsBean.getVid(), "ld");
+                songResult.setMvLdUrl(ldMvUrl);
+            }
             String mid = !songsBean.getStrMediaMid().isEmpty() ? songsBean.getStrMediaMid() : songsBean.getMedia_mid();
             if (songsBean.getSize128() != 0) {
                 songResult.setBitRate("128K");
+
                 double v = new Random(System.currentTimeMillis()).nextDouble();
                 String key = GetKey(String.valueOf(v));
                 songResult.setLqUrl("http://cc.stream.qqmusic.qq.com/M500" + mid + ".mp3?vkey=" + key + "&guid=" + v +
                         "&fromtag=0");
             }
-            if (songsBean.getSizeogg() != 0) {
-                songResult.setBitRate("192K");
-                songResult.setHqUrl("http://stream.qqmusic.tc.qq.com/" + (Integer.parseInt(SongId) + 40000000) + ".ogg");
-            }
+//            if (songsBean.getSizeogg() != 0) {
+//                songResult.setBitRate("192K");
+//                songResult.setHqUrl("http://stream.qqmusic.tc.qq.com/M800" + mid + ".mp3");
+//            }
+            //暂时不清楚如何解析192K
+
             if (songsBean.getSize320() != 0) {
 
                 songResult.setBitRate("320K");
                 double v = new Random(System.currentTimeMillis()).nextDouble();
                 String key = GetKey(String.valueOf(v));
-                songResult.setLqUrl("http://cc.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
+                songResult.setSqUrl("http://cc.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
                         "&fromtag=0");
+                if (songResult.getHqUrl().equals("")) {
+                    songResult.setHqUrl("http://cc.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
+                            "&fromtag=0");
+                }
             }
-            if (songsBean.getSizeflac() != 0) {
-                songResult.setBitRate("无损");
-                songResult.setFlacUrl("http://stream.qqmusic.tc.qq.com/" + (Integer.parseInt(SongId) + 70000000) + ".flac");
-            }
-            songResult.setPicUrl("");
+//            if (songsBean.getSizeflac() != 0) {
+//                songResult.setBitRate("无损");
+//                double v = new Random(System.currentTimeMillis()).nextDouble();
+//                String key = GetKey(String.valueOf(v));
+//                songResult.setFlacUrl("http://116.55.235.12/streamoc.music.tc.qq.com/F000" + mid + ".flac?vkey=" + key + "&guid=" + v +
+//                        "&fromtag=0");
+//
+//            }
+            //目前无法测试解析flac
+            String albummid = songsBean.getAlbummid();
+            songResult.setPicUrl("http://i.gtimg.cn/music/photo/mid_album_500/" + albummid.substring(albummid.length() - 2, albummid.length() - 1) + "/" + albummid.substring(albummid.length() - 1) + "/" + albummid + ".jpg");
             songResult.setLength(Util.secTotime(songsBean.getInterval()));
 
             songResult.setType("qq");
@@ -105,16 +124,87 @@ public class TxMusic implements IMusic {
         return list;
     }
 
-    private static String GetKey(String time) {
-        try {
+    private static String GetMvUrl(String id, String quality) {
+        String html = NetUtil.GetHtmlContent("http://vv.video.qq.com/getinfo?vid=" + id + "&platform=11&charge=1&otype=json", false);
 
-        }catch (Exception e){
+        html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
+        TencentMvData tencentMvData = JSON.parseObject(html, TencentMvData.class);
+        if (tencentMvData.getFl() == null) {
+            return "";
 
         }
+        List<TencentMvData.FlBean.FiBean> fi = tencentMvData.getFl().getFi();
+
+        HashMap<String, Integer> dic = new HashMap<>();
+        int count = fi.size();
+        for (int i = 0; i < count; i++) {
+            TencentMvData.FlBean.FiBean fiBean = fi.get(i);
+            dic.put(fiBean.getName(), fiBean.getId());
+        }
+        int mvID = 0;
+        if (quality.equals("hd")) {
+            switch (count) {
+                case 4:
+                    mvID = dic.get("fhd");
+                    break;
+                case 3:
+                    mvID = dic.get("shd");
+
+                    break;
+                case 2:
+                    mvID = dic.get("hd");
+                    break;
+                default:
+                    mvID = dic.get("sd");
+                    break;
+            }
+        } else {
+            switch (count) {
+                case 4:
+                    mvID = dic.get("shd");
+                    break;
+                case 3:
+                    mvID = dic.get("hd");
+                    break;
+
+                default:
+                    mvID = dic.get("sd");
+                    break;
+            }
+        }
+        String vkey = GetVkey(mvID, id);
+        String fn = id + ".p" + (mvID - 10000) + ".1.mp4";
+        String s = tencentMvData.getVl().getVi().get(0).getUl().getUi().get(0).getUrl() + fn + "?vkey=" + vkey;
+        return s;
+    }
+
+    private static String GetVkey(int id, String videoId) {
+        String fn = videoId + ".p" + (id - 10000) + ".1.mp4";
+        String url = "http://vv.video.qq.com/getkey?format=" + id + "&otype=json&vid=" + videoId +
+                "&platform=11&charge=1&filename=" + fn;
+
+        String html = NetUtil.GetHtmlContent(url, false);
+        if (html.isEmpty()) {
+            return "";
+        }
+        html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
+        TencentMvKey tencentMvKey = JSON.parseObject(html, TencentMvKey.class);
+        return tencentMvKey.getKey();
+
+//        return Regex.Match(html, @"(?<=key"":"")[^""]+(?="")").Value;
+    }
+
+    private static String GetKey(String time) {
+//        try {
+//
+//        }catch (Exception e){
+//
+//        }
         String html =
                 NetUtil.GetHtmlContent("http://base.music.qq.com/fcgi-bin/fcg_musicexpress.fcg?json=3&guid=" + time, false);
-        html = html.substring(0, html.length() - 1).replace("jsonCallback(","");
+        html = html.replace("jsonCallback(", "").replace(");", "");
         TencentGetKey tencentGetKey = JSON.parseObject(html, TencentGetKey.class);
+
         return tencentGetKey.getKey();
         //return Regex.Match(html, @ "(?<=key" ":\s*" ")[^" "]+").Value;
     }
