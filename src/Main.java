@@ -1,7 +1,6 @@
 import com.alibaba.fastjson.JSON;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws UnsupportedEncodingException {
-        List<SongResult> wy = MusicService.GetMusic("kg").SongSearch("why", 1, 10);
+        List<SongResult> wy = MusicService.GetMusic("qq").SongSearch("why", 1, 10);
         System.out.println(JSON.toJSONString(wy));
 //        String s = WyMusic.GetLostPlayUrl("422094369", "320000");
 //        System.out.println(s);

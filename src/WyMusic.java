@@ -74,7 +74,7 @@ public class WyMusic implements IMusic {
             String ArtistId = String.valueOf(ar.get(0).getId());
             String AlbumId = String.valueOf(songsBean.getAl().getId());
             String AlbumName = songsBean.getAl().getName();
-            songResult.setLength(secTotime(songsBean.getDt() / 1000));
+            songResult.setLength(Util.secTotime(songsBean.getDt() / 1000));
             songResult.setArtistName(artistName);
             songResult.setArtistId(ArtistId);
             songResult.setSongId(SongId);
@@ -141,21 +141,7 @@ public class WyMusic implements IMusic {
         }
     }
 
-    //将秒数转为时间
-    private static String secTotime(int seconds) {
 
-        int temp = 0;
-        StringBuffer sb = new StringBuffer();
-        temp = seconds / 3600;
-        sb.append((temp < 10) ? "0" + temp + ":" : "" + temp + ":");
-
-        temp = seconds % 3600 / 60;
-        sb.append((temp < 10) ? "0" + temp + ":" : "" + temp + ":");
-
-        temp = seconds % 3600 % 60;
-        sb.append((temp < 10) ? "0" + temp : "" + temp);
-        return sb.toString();
-    }
 
     //解析lrc歌词
     private static String GetLrc(String sid) {

@@ -9,6 +9,8 @@ public class MusicService {
                 return new WyMusic();
             case "kg":
                 return new KgMusic();
+            case "qq":
+                return new TxMusic();
         }
         return null;
     }

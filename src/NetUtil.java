@@ -154,7 +154,7 @@ public class NetUtil {
         result.setAlbumName("");
         result.setArtistId("");
         result.setArtistName("");
-        result.setBitRate("");
+        result.setBitRate("128K");
         result.setFlacUrl("");
         result.setHqUrl("");
         result.setLength("");

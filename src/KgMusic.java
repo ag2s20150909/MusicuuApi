@@ -1,9 +1,7 @@
 import com.alibaba.fastjson.JSON;
 import kg.KugouDatas;
 import kg.KugouLrc;
-import wy.NeteaseDatas;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -87,6 +85,7 @@ public class KgMusic implements IMusic {
 
             for (int k = 0; k < urlsize; k++) {
                 KugouDatas.DataBean.UrlListBean link = links.get(k);
+                songResult.setLength(Util.secTotime(link.getDuration() / 1000));
                 switch (link.getBitRate()) {
                     case 128:
                         songResult.setLqUrl(link.getUrl());
