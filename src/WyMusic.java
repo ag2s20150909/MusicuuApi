@@ -2,7 +2,6 @@ import com.alibaba.fastjson.JSON;
 import sun.misc.BASE64Encoder;
 import wy.*;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +13,13 @@ import java.util.List;
 public class WyMusic implements IMusic {
 
 
-    private static List<SongResult> search(String key, int page, int size) throws IOException {
+    private static List<SongResult> search(String key, int page, int size) throws Exception {
         String text = "{\"s\":\"" + key + "\",\"type\":1,\"offset\":" + (page - 1) * size + ",\"limit\":" + size + ",\"total\":true}";
         String s = NetUtil.GetEncHtml("http://music.163.com/weapi/cloudsearch/get/web?csrf_token=", text);
+//        System.out.println(s);
         NeteaseDatas neteaseDatas = JSON.parseObject(s, NeteaseDatas.class);
         List<NeteaseDatas.ResultBean.SongsBean> songs = neteaseDatas.getResult().getSongs();
+        System.out.println(JSON.toJSONString(songs));
         List<SongResult> songResults = GetListByJson(songs);
         return songResults;
     }
@@ -37,7 +38,7 @@ public class WyMusic implements IMusic {
 
     //解析搜索时获取到的json，然后拼接成固定格式
     //具体每个返回标签的规范参考https://github.com/metowolf/NeteaseCloudMusicApi/wiki/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API%E5%88%86%E6%9E%90---weapi
-    private static List<SongResult> GetListByJson(List<NeteaseDatas.ResultBean.SongsBean> songs) throws IOException {
+    private static List<SongResult> GetListByJson(List<NeteaseDatas.ResultBean.SongsBean> songs) throws Exception {
         List<SongResult> list = new ArrayList<>();
         int len = songs.size();
         if (len <= 0) {
@@ -229,7 +230,7 @@ public class WyMusic implements IMusic {
         try {
             html = NetUtil.GetEncHtml("http://music.163.com/weapi/song/enhance/player/url?csrf_token=", text);
             NeteaseSongUrl neteaseSongUrl = JSON.parseObject(html, NeteaseSongUrl.class);
-            if (neteaseSongUrl.getCode() == 200) {
+            if (neteaseSongUrl.getData().get(0).getCode() == 200) {
                 return neteaseSongUrl.getData().get(0).getUrl();
             } else {
                 return GetLostPlayUrl(id, quality);
