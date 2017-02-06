@@ -7,10 +7,7 @@ public class SongResult {
     /// 曲名
     /// </summary>
     private String SongName;
-    /// <summary>
-    /// 歌曲别名
-    /// </summary>
-    private String SongSubName;
+
     /// <summary>
     /// 艺术家ID
     /// </summary>
@@ -19,10 +16,7 @@ public class SongResult {
     /// 歌手名字
     /// </summary>
     private String ArtistName;
-    /// <summary>
-    /// 艺术家别名
-    /// </summary>
-    private String ArtistSubName;
+
     /// <summary>
     /// 专辑ID
     /// </summary>
@@ -31,14 +25,7 @@ public class SongResult {
     /// 专辑名
     /// </summary>
     private String AlbumName;
-    /// <summary>
-    /// 专辑别名
-    /// </summary>
-    private String AlbumSubName;
-    /// <summary>
-    /// 专辑艺术家
-    /// </summary>
-    private String AlbumArtist;
+
     /// <summary>
     /// 歌曲链接/来源
     /// </summary>
@@ -47,10 +34,7 @@ public class SongResult {
     /// 时长
     /// </summary>
     private String Length;
-    /// <summary>
-    /// 大小
-    /// </summary>
-    private String Size;
+
     /// <summary>
     /// 比特率
     /// </summary>
@@ -59,14 +43,7 @@ public class SongResult {
     /// Flac无损地址
     /// </summary>
     private String FlacUrl;
-    /// <summary>
-    /// Ape无损地址
-    /// </summary>
-    private String ApeUrl;
-    /// <summary>
-    /// Wav地址
-    /// </summary>
-    private String WavUrl;
+
     /// <summary>
     /// 320K
     /// </summary>
@@ -79,10 +56,7 @@ public class SongResult {
     /// 128K
     /// </summary>
     private String LqUrl;
-    /// <summary>
-    /// 复制链接
-    /// </summary>
-    private String CopyUrl;
+
     /// <summary>
     /// 歌曲封面
     /// </summary>
@@ -91,14 +65,7 @@ public class SongResult {
     /// LRC歌词
     /// </summary>
     private String LrcUrl;
-    /// <summary>
-    /// TRC歌词
-    /// </summary>
-    private String TrcUrl;
-    /// <summary>
-    /// KRC歌词
-    /// </summary>
-    private String KrcUrl;
+
     /// <summary>
     /// MV Id
     /// </summary>
@@ -112,24 +79,7 @@ public class SongResult {
     /// 普清MV地址
     /// </summary>
     private String MvLdUrl;
-    /// <summary>
-    /// 语种
-    /// </summary>
-    private String Language;
-    /// <summary>
-    /// 发行公司
-    /// </summary>
-    private String Company;
-    /// <summary>
-    /// 歌曲发行日期
-    /// </summary>
-    private String Year;
-    /// <summary>
-    /// 碟片
-    /// </summary>
-    private String Disc;
-    /// <summary>
-    /// 曲目编号
+
 
     public String getSongId() {
         return SongId;
@@ -284,8 +234,6 @@ public class SongResult {
         Type = type;
     }
 
-    /// </summary>
-    private String TrackNum;
     /// <summary>
     /// 类型
     /// </summary>

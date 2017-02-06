@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by qtfreet00 on 2017/2/5.
@@ -49,6 +51,25 @@ public class NetUtil {
 
     public static String GetHtmlContent(String url) throws IOException {
         Request request = new Request.Builder().url(url).get().headers(headers).build();
+        Response execute = client.newCall(request).execute();
+        if (execute.isSuccessful()) {
+            return execute.body().string();
+        }
+        return "";
+    }
+
+    public static String PostData(String url, HashMap<String, String> params) throws IOException {
+        FormBody.Builder build = new FormBody.Builder();
+        int len = params.size();
+        if (len <= 0) {
+            return "";
+        }
+        Set<String> keys = params.keySet();
+        for (String s : keys) {
+            build.add(s, params.get(s));
+        }
+        FormBody body = build.build();
+        Request request = new Request.Builder().url(url).post(body).headers(headers).build();
         Response execute = client.newCall(request).execute();
         if (execute.isSuccessful()) {
             return execute.body().string();
