@@ -166,7 +166,6 @@ public class NetUtil {
         result.setHqUrl("");
         result.setSqUrl("");
         result.setLength("");
-        result.setLqUrl("");
         result.setLrcUrl("");
         result.setType("");
         result.setPicUrl("");

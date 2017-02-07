@@ -2,132 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a3a1ef5-f4ed-4386-b873-383cad7f8286" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/IMusic.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/MusicService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/NetUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/SongResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/TtMusic.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/TxMusic.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/Util.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/WyMusic.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$AuditionListBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$LlListBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$MvListBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$RightKeyBean$AlbumPackageBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$RightKeyBean$SongRightsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$RightKeyBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$SingersBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean$UrlListBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas$DataBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianDatas.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianLrc$DataBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tt/TiantianLrc.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$SemanticBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$SongBean$ListBean$PayBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$SongBean$ListBean$PreviewBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$SongBean$ListBean$SingerBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$SongBean$ListBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$SongBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean$ZhidaBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas$DataBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentDatas.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentGetKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$FlBean$FiBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$FlBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$SflBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean$ClBean$CiBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean$ClBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean$PlBean$PdBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean$PlBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean$UlBean$UiBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean$UlBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean$ViBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData$VlBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/tx/TencentMvKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean$AlBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean$ArBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean$HBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean$LBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean$MBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean$PrivilegeBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean$SongsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas$ResultBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseDatas.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$ArtistBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$ArtistsBeanXX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$InfoBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$AlbumBean$ArtistBeanX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$AlbumBean$ArtistsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$AlbumBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$ArtistsBeanX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$BMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$HMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$LMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean$MMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX$SongsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong$AlbumBeanX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSong.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$PrivilegesBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$SongsBean$AlBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$SongsBean$ArBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$SongsBean$HBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$SongsBean$LBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$SongsBean$MBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId$SongsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLostSongAlbumId.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLrc$KlyricBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLrc$LrcBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLrc$LyricUserBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLrc$TlyricBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseLrc.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseMv$MvsBean$ArtistBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseMv$MvsBean$MvArtistsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseMv$MvsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseMv.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$EqualizersBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$AlbumBean$ArtistBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$AlbumBean$ArtistsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$AlbumBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$ArtistsBeanX.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$BMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$HMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$LMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean$MMusicBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic$SongsBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteasePic.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseSongUrl$DataBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/untitled4/wy/NeteaseSongUrl.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/untitled4/Main.class" afterPath="$PROJECT_DIR$/out/production/untitled4/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/IMusic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/KgMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/KgMusic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/MusicService.java" afterPath="$PROJECT_DIR$/src/MusicService/MusicService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NetUtil.java" afterPath="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SongResult.java" afterPath="$PROJECT_DIR$/src/MusicService/SongResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TtMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/TtMusic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TxMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/TxMusic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Util.java" afterPath="$PROJECT_DIR$/src/MusicService/Util.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/WyMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/WyMusic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/kg/KugouDatas.java" afterPath="$PROJECT_DIR$/src/MusicBean/kg/KugouDatas.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/kg/KugouLrc.java" afterPath="$PROJECT_DIR$/src/MusicBean/kg/KugouLrc.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/kg/KugouMp3Url.java" afterPath="$PROJECT_DIR$/src/MusicBean/kg/KugouMp3Url.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/kg/KugouMv.java" afterPath="$PROJECT_DIR$/src/MusicBean/kg/KugouMv.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/kg/KugouPic.java" afterPath="$PROJECT_DIR$/src/MusicBean/kg/KugouPic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tt/TiantianDatas.java" afterPath="$PROJECT_DIR$/src/MusicBean/tt/TiantianDatas.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tt/TiantianLrc.java" afterPath="$PROJECT_DIR$/src/MusicBean/tt/TiantianLrc.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tx/TencentDatas.java" afterPath="$PROJECT_DIR$/src/MusicBean/tx/TencentDatas.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tx/TencentGetKey.java" afterPath="$PROJECT_DIR$/src/MusicBean/tx/TencentGetKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tx/TencentMvData.java" afterPath="$PROJECT_DIR$/src/MusicBean/tx/TencentMvData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tx/TencentMvKey.java" afterPath="$PROJECT_DIR$/src/MusicBean/tx/TencentMvKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteaseDatas.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteaseDatas.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteaseLostSong.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteaseLostSong.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteaseLostSongAlbumId.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteaseLostSongAlbumId.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteaseLrc.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteaseLrc.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteaseMv.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteaseMv.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteasePic.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteasePic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/wy/NeteaseSongUrl.java" afterPath="$PROJECT_DIR$/src/MusicBean/wy/NeteaseSongUrl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/NetUtil.java" afterPath="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -181,6 +57,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="NetUtil.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="KgMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/KgMusic.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -213,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TxMusic.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TxMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+            <state relative-caret-position="-725">
+              <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,12 +113,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KugouDatas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MusicBean/kg/KugouDatas.java">
+      <file leaf-file-name="Util.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MusicService/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10648">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="-542">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -242,20 +132,6 @@
               <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2781">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2491#2492#0" expanded="true" />
-                <element signature="e#2540#2541#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -332,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/MusicService/WyMusic.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/MusicService/TxMusic.java" />
+        <option value="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
       </list>
     </option>
   </component>
@@ -1060,7 +937,7 @@
       <workItem from="1486223459991" duration="1224000" />
       <workItem from="1486344736725" duration="20379000" />
       <workItem from="1486381169859" duration="6657000" />
-      <workItem from="1486440089187" duration="13950000" />
+      <workItem from="1486440089187" duration="15017000" />
     </task>
     <task id="LOCAL-00001" summary="完善网易云音乐解析">
       <created>1486222824661</created>
@@ -1132,11 +1009,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486456332036</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update">
+      <created>1486457694520</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1486457694520</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56029000" />
+    <option name="totallyTimeSpent" value="57096000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1149,7 +1033,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44126984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2761905" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -4993,30 +4877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2781">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2491#2492#0" expanded="true" />
-            <element signature="e#2540#2541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicBean/kg/KugouDatas.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10648">
@@ -5037,14 +4897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/SongResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -5091,8 +4943,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+        <state relative-caret-position="-725">
+          <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-542">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/SongResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
