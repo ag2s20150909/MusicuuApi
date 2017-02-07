@@ -10,8 +10,8 @@ public class Util {
     //将秒数转为时间
     public static String secTotime(int seconds) {
 
-        int temp = 0;
-        StringBuffer sb = new StringBuffer();
+        int temp;
+        StringBuilder sb = new StringBuilder();
         temp = seconds / 3600;
         sb.append((temp < 10) ? "0" + temp + ":" : "" + temp + ":");
 
@@ -35,9 +35,9 @@ public class Util {
             md.update(sourceStr.getBytes());
             byte b[] = md.digest();
             int i;
-            StringBuffer buf = new StringBuffer("");
-            for (int offset = 0; offset < b.length; offset++) {
-                i = b[offset];
+            StringBuilder buf = new StringBuilder("");
+            for (byte aB : b) {
+                i = aB;
                 if (i < 0)
                     i += 256;
                 if (i < 16)
@@ -46,7 +46,6 @@ public class Util {
             }
             result = buf.toString();
         } catch (NoSuchAlgorithmException e) {
-            System.out.println(e);
         }
         return result;
     }

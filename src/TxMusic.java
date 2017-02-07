@@ -50,10 +50,10 @@ public class TxMusic implements IMusic {
         if (len <= 0) {
             return null;
         }
-        for (int i = 0; i < len; i++) {
+        for (TencentDatas.DataBean.SongBean.ListBean song : songs) {
             SongResult songResult = new SongResult();
             NetUtil.init(songResult);
-            TencentDatas.DataBean.SongBean.ListBean songsBean = songs.get(i);
+            TencentDatas.DataBean.SongBean.ListBean songsBean = song;
             String SongId = String.valueOf(songsBean.getSongid());
             String SongName = songsBean.getSongname();
             String Songlink = "http://y.qq.com/#type=song&mid=" + String.valueOf(songsBean.getSongmid());
@@ -131,11 +131,10 @@ public class TxMusic implements IMusic {
 
         HashMap<String, Integer> dic = new HashMap<>();
         int count = fi.size();
-        for (int i = 0; i < count; i++) {
-            TencentMvData.FlBean.FiBean fiBean = fi.get(i);
+        for (TencentMvData.FlBean.FiBean fiBean : fi) {
             dic.put(fiBean.getName(), fiBean.getId());
         }
-        int mvID = 0;
+        int mvID;
         if (quality.equals("hd")) {
             switch (count) {
                 case 4:
@@ -168,8 +167,7 @@ public class TxMusic implements IMusic {
         }
         String vkey = GetVkey(mvID, id);
         String fn = id + ".p" + (mvID - 10000) + ".1.mp4";
-        String s = tencentMvData.getVl().getVi().get(0).getUl().getUi().get(0).getUrl() + fn + "?vkey=" + vkey;
-        return s;
+        return tencentMvData.getVl().getVi().get(0).getUl().getUi().get(0).getUrl() + fn + "?vkey=" + vkey;
     }
 
     private static String GetVkey(int id, String videoId) {

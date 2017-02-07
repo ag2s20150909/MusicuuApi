@@ -26,9 +26,8 @@ public class TtMusic implements IMusic {
         }
         int totalsize = ttDatas.getTotalCount();
         List<TiantianDatas.DataBean> data = ttDatas.getData();
-        List<SongResult> songResults = GetListByJson(data);
 
-        return songResults;
+        return GetListByJson(data);
     }
 
     //解析搜索时获取到的json，然后拼接成固定格式
@@ -39,10 +38,10 @@ public class TtMusic implements IMusic {
         if (len <= 0) {
             return null;
         }
-        for (int i = 0; i < len; i++) {
+        for (TiantianDatas.DataBean song : songs) {
             SongResult songResult = new SongResult();
             NetUtil.init(songResult);
-            TiantianDatas.DataBean songsBean = songs.get(i);
+            TiantianDatas.DataBean songsBean = song;
             List<TiantianDatas.DataBean.UrlListBean> links = songsBean.getUrlList();
             if (JSON.toJSONString(links).equals("[]") || links == null || links.size() == 0) {
                 continue;
@@ -83,8 +82,7 @@ public class TtMusic implements IMusic {
             }
             int urlsize = links.size();
 
-            for (int k = 0; k < urlsize; k++) {
-                TiantianDatas.DataBean.UrlListBean link = links.get(k);
+            for (TiantianDatas.DataBean.UrlListBean link : links) {
                 songResult.setLength(Util.secTotime(link.getDuration() / 1000));
                 switch (link.getBitRate()) {
                     case 128:
@@ -141,9 +139,8 @@ public class TtMusic implements IMusic {
                     "&title=" + UrlEncode(songName) + "&song_id=" + songId);
             System.out.println(s);
             TiantianLrc kugouLrc = JSON.parseObject(s, TiantianLrc.class);
-            String lrc = kugouLrc.getData().getLrc();
 
-            return lrc;
+            return kugouLrc.getData().getLrc();
         } catch (Exception e) {
             return "";
         }

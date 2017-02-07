@@ -25,9 +25,7 @@ public class KgMusic implements IMusic {
         }
         int totalsize = kugouDatas.getJSONObject("data").getIntValue("total");
         JSONArray data = kugouDatas.getJSONObject("data").getJSONArray("info");
-        List<SongResult> songResults = GetListByJson(data);
-
-        return songResults;
+        return GetListByJson(data);
     }
 
     //解析搜索时获取到的json，然后拼接成固定格式
@@ -94,7 +92,7 @@ public class KgMusic implements IMusic {
     }
 
     private static String GetUrl(String id, String quality, String format) {
-        String html = "";
+        String html;
         if (format.equals("jpg")) {
             html = NetUtil.GetHtmlContent("http://ioscdn.kugou.com/api/v3/album/info?albumid=" + id + "&version=7910");
             if (html.isEmpty()) {

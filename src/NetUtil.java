@@ -16,9 +16,9 @@ import java.util.Set;
  * Created by qtfreet00 on 2017/2/5.
  */
 public class NetUtil {
-    private static OkHttpClient client = new OkHttpClient();
-    private static MediaType Content_Type = MediaType.parse("application/x-www-form-urlencoded");
-    private static Headers headers = new Headers.Builder()
+    private static final OkHttpClient client = new OkHttpClient();
+    private static final MediaType Content_Type = MediaType.parse("application/x-www-form-urlencoded");
+    private static final Headers headers = new Headers.Builder()
             .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
             .add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
             .build();
@@ -33,13 +33,14 @@ public class NetUtil {
     public static String GetEncHtml(String url, String text, boolean needCookie) {
 
         String param = encryptedRequest(text);
+        assert param != null;
         RequestBody requestBody = RequestBody.create(Content_Type, param);
         Request.Builder builder = new Request.Builder().url(url).post(requestBody).headers(headers);
         if (needCookie) {
             builder.addHeader("Cookie", "__remember_me=true; MUSIC_U=5f9d910d66cb2440037d1c68e6972ebb9f15308b56bfeaa4545d34fbabf71e0f36b9357ab7f474595690d369e01fbb9741049cea1c6bb9b6; __csrf=8ea789fbbf78b50e6b64b5ebbb786176; os=uwp; osver=10.0.10586.318; appver=1.2.1; deviceId=0e4f13d2d2ccbbf31806327bd4724043");
         }
         Request request = builder.build();
-        Response execute = null;
+        Response execute;
         try {
             execute = client.newCall(request).execute();
             if (execute.isSuccessful()) {
@@ -103,6 +104,7 @@ public class NetUtil {
         String encText = aesEncrypt(aesEncrypt(text, nonce), secKey);
         String encSecKey = rsaEncrypt(secKey, pubKey, modulus);
         try {
+            assert encText != null;
             return "params=" + URLEncoder.encode(encText, "UTF-8") + "&encSecKey=" + URLEncoder.encode(encSecKey, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             //ignore

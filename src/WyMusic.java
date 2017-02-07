@@ -25,7 +25,7 @@ public class WyMusic implements IMusic {
             int totalsize = neteaseDatas.getResult().getSongCount(); //歌曲总数量
             List<NeteaseDatas.ResultBean.SongsBean> songs = neteaseDatas.getResult().getSongs();
             System.out.println(JSON.toJSONString(songs));
-            List<SongResult> songResults = null;
+            List<SongResult> songResults;
             songResults = GetListByJson(songs);
             if (songResults == null || songResults.size() <= 0) {
                 return null;//没有找到符合的歌曲
@@ -39,7 +39,7 @@ public class WyMusic implements IMusic {
 
     //获取封面
     private static String GetPic(String id) {
-        String html = null;
+        String html;
         try {
             html = NetUtil.GetHtmlContent("http://music.163.com/api/song/detail/?ids=%5B" + id + "%5D", true);
             NeteasePic neteasePic = JSON.parseObject(html, NeteasePic.class);
@@ -57,15 +57,15 @@ public class WyMusic implements IMusic {
         if (len <= 0) {
             return null;
         }
-        for (int i = 0; i < len; i++) {
+        for (NeteaseDatas.ResultBean.SongsBean song : songs) {
             SongResult songResult = new SongResult();
             NetUtil.init(songResult);
-            NeteaseDatas.ResultBean.SongsBean songsBean = songs.get(i);
+            NeteaseDatas.ResultBean.SongsBean songsBean = song;
             List<NeteaseDatas.ResultBean.SongsBean.ArBean> ar = songsBean.getAr();
             int arLen = ar.size();
             String artistName = "";
-            for (int j = 0; j < arLen; j++) {
-                artistName = artistName + ar.get(j).getName() + "/";
+            for (NeteaseDatas.ResultBean.SongsBean.ArBean anAr : ar) {
+                artistName = artistName + anAr.getName() + "/";
             }
             artistName = artistName.substring(0, artistName.length() - 1);
             String SongId = String.valueOf(songsBean.getId());
@@ -165,7 +165,7 @@ public class WyMusic implements IMusic {
     //获取mv地址
     private static String GetMvUrl(String mid, String quality) {
         String url = "http://music.163.com/api/song/mv?id=" + mid + "&type=mp4";
-        String html = null;
+        String html;
         try {
             html = NetUtil.GetHtmlContent(url, true);
             NeteaseMv neteaseMv = JSON.parseObject(html, NeteaseMv.class);
@@ -202,7 +202,7 @@ public class WyMusic implements IMusic {
     //获取音乐播放地址
     private static String GetPlayUrl(String id, String quality) {
         String text = "{\"ids\":[\"" + id + "\"],\"br\":" + quality + ",\"csrf_token\":\"\"}";
-        String html = null;
+        String html;
         try {
             html = NetUtil.GetEncHtml("http://music.163.com/weapi/song/enhance/player/url?csrf_token=", text, true);
             NeteaseSongUrl neteaseSongUrl = JSON.parseObject(html, NeteaseSongUrl.class);
@@ -225,8 +225,7 @@ public class WyMusic implements IMusic {
             NeteaseLostSong neteaseLostSong = JSON.parseObject(s, NeteaseLostSong.class);
             List<NeteaseLostSong.AlbumBeanX.SongsBean> songs = neteaseLostSong.getAlbum().getSongs();
             int size = songs.size();
-            for (int i = 0; i < size; i++) {
-                NeteaseLostSong.AlbumBeanX.SongsBean songsBean = songs.get(i);
+            for (NeteaseLostSong.AlbumBeanX.SongsBean songsBean : songs) {
                 if (songsBean.getId() == Integer.parseInt(id)) {
                     switch (quality) {
                         case "320000":
@@ -261,8 +260,7 @@ public class WyMusic implements IMusic {
     //通过sid去搜索真实播放地址
     private static String GetUrlBySid(String dfsId) {
         String encryptPath = EncryptId(dfsId);
-        String url = "http://m2.music.126.net/" + encryptPath + "/" + dfsId + ".mp3";
-        return url;
+        return "http://m2.music.126.net/" + encryptPath + "/" + dfsId + ".mp3";
     }
 
     public static String EncryptId(String id) {
@@ -273,7 +271,7 @@ public class WyMusic implements IMusic {
             byte tmp = byte1[(i % byte1Length)];
             byte2[i] = ((byte) (byte2[i] ^ tmp));
         }
-        MessageDigest md5 = null;
+        MessageDigest md5;
         try {
             md5 = MessageDigest.getInstance("MD5");
         } catch (Exception e) {
