@@ -15,7 +15,7 @@ public class TtMusic implements IMusic {
 
     private static List<SongResult> search(String key, int page, int size) throws Exception {
         String url = "http://search.dongting.com/song/search?page=" + page + "&user_id=0&tid=0&app=ttpod&size=" + size + "&q=" + key + "&active=0";
-        String s = NetUtil.GetHtmlContent(url, false);
+        String s = NetUtil.GetHtmlContent(url);
         System.out.println(s);
         TiantianDatas ttDatas = JSON.parseObject(s, TiantianDatas.class);
         if (ttDatas == null) {
@@ -32,7 +32,6 @@ public class TtMusic implements IMusic {
     }
 
     //解析搜索时获取到的json，然后拼接成固定格式
-    //具体每个返回标签的规范参考https://github.com/metowolf/NeteaseCloudMusicApi/wiki/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API%E5%88%86%E6%9E%90---weapi
     private static List<SongResult> GetListByJson(List<TiantianDatas.DataBean> songs) throws Exception {
         List<SongResult> list = new ArrayList<>();
         System.out.println(JSON.toJSONString(songs));
@@ -139,7 +138,7 @@ public class TtMusic implements IMusic {
         try {
             //   SearchSong(songId);
             String s = NetUtil.GetHtmlContent("http://lp.music.ttpod.com/lrc/down?artist=" + UrlEncode(ArtistName) +
-                    "&title=" + UrlEncode(songName) + "&song_id=" + songId, false);
+                    "&title=" + UrlEncode(songName) + "&song_id=" + songId);
             System.out.println(s);
             TiantianLrc kugouLrc = JSON.parseObject(s, TiantianLrc.class);
             String lrc = kugouLrc.getData().getLrc();

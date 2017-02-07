@@ -142,7 +142,6 @@ public class WyMusic implements IMusic {
     }
 
 
-
     //解析lrc歌词
     private static String GetLrc(String sid) {
         String url = "http://music.163.com/api/song/lyric?os=pc&id=" + sid + "&lv=-1&kv=-1&tv=-1";

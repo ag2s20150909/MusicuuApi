@@ -15,7 +15,7 @@ import java.util.Random;
 public class TxMusic implements IMusic {
     private static List<SongResult> search(String key, int page, int size) throws Exception {
         String url = "http://soso.music.qq.com/fcgi-bin/search_cp?aggr=0&catZhida=0&lossless=1&sem=1&w=" + key + "&n=" + size + "&t=0&p=" + page + "&remoteplace=sizer.yqqlist.song&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=GB2312&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
-        String html = NetUtil.GetHtmlContent(url, false);
+        String html = NetUtil.GetHtmlContent(url);
         if (html.isEmpty()) {
             return null;//获取信息失败
         }
@@ -44,7 +44,6 @@ public class TxMusic implements IMusic {
     }
 
     //解析搜索时获取到的json，然后拼接成固定格式
-    //具体每个返回标签的规范参考https://github.com/metowolf/NeteaseCloudMusicApi/wiki/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API%E5%88%86%E6%9E%90---weapi
     private static List<SongResult> GetListByJson(List<TencentDatas.DataBean.SongBean.ListBean> songs) throws Exception {
         List<SongResult> list = new ArrayList<>();
         int len = songs.size();
@@ -120,7 +119,7 @@ public class TxMusic implements IMusic {
     }
 
     private static String GetMvUrl(String id, String quality) {
-        String html = NetUtil.GetHtmlContent("http://vv.video.qq.com/getinfo?vid=" + id + "&platform=11&charge=1&otype=json", false);
+        String html = NetUtil.GetHtmlContent("http://vv.video.qq.com/getinfo?vid=" + id + "&platform=11&charge=1&otype=json");
 
         html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
         TencentMvData tencentMvData = JSON.parseObject(html, TencentMvData.class);
@@ -178,7 +177,7 @@ public class TxMusic implements IMusic {
         String url = "http://vv.video.qq.com/getkey?format=" + id + "&otype=json&vid=" + videoId +
                 "&platform=11&charge=1&filename=" + fn;
 
-        String html = NetUtil.GetHtmlContent(url, false);
+        String html = NetUtil.GetHtmlContent(url);
         if (html.isEmpty()) {
             return "";
         }
@@ -196,7 +195,7 @@ public class TxMusic implements IMusic {
 //
 //        }
         String html =
-                NetUtil.GetHtmlContent("http://base.music.qq.com/fcgi-bin/fcg_musicexpress.fcg?json=3&guid=" + time, false);
+                NetUtil.GetHtmlContent("http://base.music.qq.com/fcgi-bin/fcg_musicexpress.fcg?json=3&guid=" + time);
         html = html.replace("jsonCallback(", "").replace(");", "");
         TencentGetKey tencentGetKey = JSON.parseObject(html, TencentGetKey.class);
 

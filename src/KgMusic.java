@@ -1,11 +1,11 @@
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import kg.*;
-import sun.nio.ch.Net;
+import kg.KugouLrc;
+import kg.KugouMp3Url;
+import kg.KugouMv;
+import kg.KugouPic;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class KgMusic implements IMusic {
     private static List<SongResult> search(String key, int page, int size) throws Exception {
         String url = "http://ioscdn.kugou.com/api/v3/search/song?keyword=" + key + "&page=" + page + "&pagesize=" + size + "&showtype=10&plat=2&version=7910&tag=1&correct=1&privilege=1&sver=5";
-        String s = NetUtil.GetHtmlContent(url, false);
+        String s = NetUtil.GetHtmlContent(url);
         JSONObject kugouDatas = JSON.parseObject(s);
         if (kugouDatas == null) {
             return null;//搜索歌曲失败
@@ -31,7 +31,6 @@ public class KgMusic implements IMusic {
     }
 
     //解析搜索时获取到的json，然后拼接成固定格式
-    //具体每个返回标签的规范参考https://github.com/metowolf/NeteaseCloudMusicApi/wiki/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API%E5%88%86%E6%9E%90---weapi
     private static List<SongResult> GetListByJson(JSONArray songs) throws Exception {
         List<SongResult> list = new ArrayList<>();
         int len = songs.size();
@@ -87,6 +86,7 @@ public class KgMusic implements IMusic {
 
             songResult.setType("kg");
 //            songResult.setPicUrl(songsBean.getPicUrl());
+//            GetUrl(SongId,"320","lrc");
 //            songResult.setLrcUrl(GetLrcUrl(SongId, SongName, artistName)); //暂不去拿歌曲，直接解析浪费性能
             list.add(songResult);
         }
@@ -96,7 +96,7 @@ public class KgMusic implements IMusic {
     private static String GetUrl(String id, String quality, String format) {
         String html = "";
         if (format.equals("jpg")) {
-            html = NetUtil.GetHtmlContent("http://ioscdn.kugou.com/api/v3/album/info?albumid=" + id + "&version=7910", false);
+            html = NetUtil.GetHtmlContent("http://ioscdn.kugou.com/api/v3/album/info?albumid=" + id + "&version=7910");
             if (html.isEmpty()) {
                 return "";
             }
@@ -108,7 +108,7 @@ public class KgMusic implements IMusic {
         }
 
         if (format.equals("lrc")) {
-            html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=" + id, false);
+            html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=" + id);
 
             if (html.contains("hash error") || html.isEmpty()) {
                 return "";
@@ -122,13 +122,14 @@ public class KgMusic implements IMusic {
                 if (html.isEmpty()) {
                     return "";
                 }
+//                System.out.println(html);
                 return "[ti:" + songName + "]\n[by: FM]\n" + html;
             }
 
         }
         if (format.equals("mp3")) {
             String url = "http://trackercdn.kugou.com/i/?key=" + Util.getMD5(id + "kgcloud") + "&cmd=4&acceptMp3=1&hash=" + id + "&pid=1";
-            html = NetUtil.GetHtmlContent(url, false);
+            html = NetUtil.GetHtmlContent(url);
             if (html.contains("Bad key")) {
                 return "";
             }
@@ -138,7 +139,7 @@ public class KgMusic implements IMusic {
         if (format.equals("mp4")) {
             String key = Util.getMD5(id + "kugoumvcloud");
             html = NetUtil.GetHtmlContent("http://trackermv.kugou.com/interface/index?cmd=100&pid=6&ext=mp4&hash=" + id +
-                    "&quality=-1&key=" + key + "&backupdomain=1", false);
+                    "&quality=-1&key=" + key + "&backupdomain=1");
 //            /interface/index?cmd=100&pid=6&ext=mp4&hash=1f1668e15ee298b4d3ee630cef0c6a90&quality=-1&key=0cda6579ff6a8822d5d5a9e504bbcc57&backupdomain=1
             if (html.contains("Bad key")) {
                 return "";

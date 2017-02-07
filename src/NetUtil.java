@@ -52,6 +52,10 @@ public class NetUtil {
         return "";
     }
 
+    public static String GetHtmlContent(String url) {
+        return GetHtmlContent(url, false);
+    }
+
     public static String GetHtmlContent(String url, boolean needCookie) {
         try {
             Request.Builder builder = new Request.Builder().url(url).get().headers(headers);
