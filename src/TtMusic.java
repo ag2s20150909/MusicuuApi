@@ -17,15 +17,15 @@ public class TtMusic implements IMusic {
         String url = "http://search.dongting.com/song/search?page=" + page + "&user_id=0&tid=0&app=ttpod&size=" + size + "&q=" + key + "&active=0";
         String s = NetUtil.GetHtmlContent(url, false);
         System.out.println(s);
-        TiantianDatas kugouDatas = JSON.parseObject(s, TiantianDatas.class);
-        if (kugouDatas == null) {
+        TiantianDatas ttDatas = JSON.parseObject(s, TiantianDatas.class);
+        if (ttDatas == null) {
             return null;//搜索歌曲失败
         }
-        if (kugouDatas.getTotalCount() == 0) {
+        if (ttDatas.getTotalCount() == 0) {
             return null;//没有搜到歌曲
         }
-        int totalsize = kugouDatas.getTotalCount();
-        List<TiantianDatas.DataBean> data = kugouDatas.getData();
+        int totalsize = ttDatas.getTotalCount();
+        List<TiantianDatas.DataBean> data = ttDatas.getData();
         List<SongResult> songResults = GetListByJson(data);
 
         return songResults;

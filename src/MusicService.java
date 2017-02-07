@@ -11,6 +11,8 @@ public class MusicService {
                 return new TtMusic();
             case "qq":
                 return new TxMusic();
+            case "kg":
+                return new KgMusic();
         }
         return null;
     }
