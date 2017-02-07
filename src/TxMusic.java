@@ -81,44 +81,39 @@ public class TxMusic implements IMusic {
             if (songsBean.getSize128() != 0) {
                 songResult.setBitRate("128K");
 
-                double v = new Random(System.currentTimeMillis()).nextDouble();
+                long v = new Random(System.currentTimeMillis()).nextLong();
                 String key = GetKey(String.valueOf(v));
                 songResult.setLqUrl("http://cc.stream.qqmusic.qq.com/M500" + mid + ".mp3?vkey=" + key + "&guid=" + v +
                         "&fromtag=0");
             }
-//            if (songsBean.getSizeogg() != 0) {
-//                songResult.setBitRate("192K");
-//                songResult.setHqUrl("http://stream.qqmusic.tc.qq.com/M800" + mid + ".mp3");
-//            }
-            //暂时不清楚如何解析192K
-
+            if (songsBean.getSizeogg() != 0) {
+                songResult.setBitRate("192K");
+                long v = new Random(System.currentTimeMillis()).nextLong();
+                String key = GetKey(String.valueOf(v));
+                songResult.setHqUrl("http://ws.stream.qqmusic.qq.com/O600" + mid + ".ogg?vkey=" + key + "&guid=" + v +
+                        "&fromtag=50");
+            }
             if (songsBean.getSize320() != 0) {
 
                 songResult.setBitRate("320K");
-                double v = new Random(System.currentTimeMillis()).nextDouble();
+                long v = new Random(System.currentTimeMillis()).nextLong();
                 String key = GetKey(String.valueOf(v));
-                songResult.setSqUrl("http://cc.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
-                        "&fromtag=0");
-                if (songResult.getHqUrl().equals("")) {
-                    songResult.setHqUrl("http://cc.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
-                            "&fromtag=0");
-                }
+                songResult.setSqUrl("http://ws.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
+                        "&fromtag=50");
+
             }
-//            if (songsBean.getSizeflac() != 0) {
-//                songResult.setBitRate("无损");
-//                double v = new Random(System.currentTimeMillis()).nextDouble();
-//                String key = GetKey(String.valueOf(v));
-//                songResult.setFlacUrl("http://116.55.235.12/streamoc.music.tc.qq.com/F000" + mid + ".flac?vkey=" + key + "&guid=" + v +
-//                        "&fromtag=0");
-//
-//            }
-            //目前无法测试解析flac
+            if (songsBean.getSizeflac() != 0) {
+                songResult.setBitRate("无损");
+                songResult.setFlacUrl("http://dl.stream.qqmusic.qq.com/F000" + mid + ".flac?vkey=F7B5C260CB57AE3339B157A9443C33A01043A9AB6A8CFC7600535EEC4FDA13A31B1C94259C6A655FAB2A255A4C107F6D3A2FB1F2308ABE60&guid=YYFM&uin=123456&fromtag=53");
+
+            }
+            //ape为A000
             String albummid = songsBean.getAlbummid();
             songResult.setPicUrl("http://i.gtimg.cn/music/photo/mid_album_500/" + albummid.substring(albummid.length() - 2, albummid.length() - 1) + "/" + albummid.substring(albummid.length() - 1) + "/" + albummid + ".jpg");
             songResult.setLength(Util.secTotime(songsBean.getInterval()));
 
             songResult.setType("qq");
-//            songResult.setLrcUrl(GetLrcUrl(SongId, SongName, artistName)); //暂不去拿歌曲，直接解析浪费性能
+//            songResult.setLrcUrl(GetLrcUrl(SongId, SongName, artistName)); //暂不去拿歌词，直接解析浪费性能
             list.add(songResult);
         }
         return list;

@@ -35,6 +35,7 @@ public class TtMusic implements IMusic {
     //具体每个返回标签的规范参考https://github.com/metowolf/NeteaseCloudMusicApi/wiki/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90API%E5%88%86%E6%9E%90---weapi
     private static List<SongResult> GetListByJson(List<TiantianDatas.DataBean> songs) throws Exception {
         List<SongResult> list = new ArrayList<>();
+        System.out.println(JSON.toJSONString(songs));
         int len = songs.size();
         if (len <= 0) {
             return null;
@@ -102,6 +103,28 @@ public class TtMusic implements IMusic {
                         songResult.setSqUrl(link.getUrl());
                         songResult.setBitRate("320K");
                         break;
+                }
+            }
+            if (songsBean.getLlList() != null && songsBean.getLlList().size() != 0) {
+                songResult.setBitRate("无损");
+                int size = songsBean.getLlList().size();
+                for (int k = 0; k < size; k++) {
+                    TiantianDatas.DataBean.LlListBean llListBean = songsBean.getLlList().get(k);
+                    switch (llListBean.getSuffix()) {
+                        case "flac":
+                            songResult.setFlacUrl(llListBean.getUrl());
+                            break;
+                        case "ape":
+//                            songResult.setFlacUrl(llListBean.getUrl());
+                            break;
+                        case "wav":
+//                            songResult.setFlacUrl(llListBean.getUrl());
+                            break;
+                        default:
+                            songResult.setFlacUrl(llListBean.getUrl());
+                            break;
+
+                    }
                 }
             }
             songResult.setType("tt");
