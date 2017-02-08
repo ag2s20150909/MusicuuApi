@@ -14,9 +14,8 @@ import java.util.List;
  */
 public class WyMusic implements IMusic {
 
-
+    //网易不支持无损解析，支持下架音乐
     private static List<SongResult> search(String key, int page, int size) {
-
         try {
             String text = "{\"s\":\"" + key + "\",\"type\":1,\"offset\":" + (page - 1) * size + ",\"limit\":" + size + ",\"total\":true}";
             String s = NetUtil.GetEncHtml("http://music.163.com/weapi/cloudsearch/get/web?csrf_token=", text, true);

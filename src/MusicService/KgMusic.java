@@ -15,6 +15,7 @@ import java.util.List;
  * Created by qtfreet on 2017/2/7.
  */
 public class KgMusic implements IMusic {
+    //酷狗支持无损和mv解析
     private static List<SongResult> search(String key, int page, int size) throws Exception {
         String url = "http://ioscdn.kugou.com/api/v3/search/song?keyword=" + key + "&page=" + page + "&pagesize=" + size + "&showtype=10&plat=2&version=7910&tag=1&correct=1&privilege=1&sver=5";
         String s = NetUtil.GetHtmlContent(url);

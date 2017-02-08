@@ -75,6 +75,24 @@ public class NetUtil {
         return "";
     }
 
+
+    public static String GetHtmlWithRefer(String url, String refer) {
+        try {
+            Request.Builder builder = new Request.Builder().url(url).get().headers(headers);
+
+            builder.addHeader("Referer", refer);
+
+            Request request = builder.build();
+            Response execute = client.newCall(request).execute();
+            if (execute.isSuccessful()) {
+                return execute.body().string();
+            }
+        } catch (Exception e) {
+
+        }
+        return "";
+    }
+
     public static String PostData(String url, HashMap<String, String> params) {
 
         try {

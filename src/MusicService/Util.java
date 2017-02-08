@@ -1,7 +1,10 @@
 package MusicService;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -24,8 +27,26 @@ public class Util {
         return sb.toString();
     }
 
+    public static String UrlEncode(String str) {
+        try {
+            return URLEncoder.encode(str, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
+    }
+
+
+    public static String RegexString(String regex, String text) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        if (matcher.find()) {
+            return matcher.group(0);
+        }
+        return "";
+    }
+
     public static boolean isNumber(String text) {
-        return Pattern.compile("^\\d+$").matcher(text).find();
+        return Pattern.matches("^\\d+$", text);
     }
 
 

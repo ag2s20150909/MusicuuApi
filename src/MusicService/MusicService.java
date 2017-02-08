@@ -14,6 +14,8 @@ public class MusicService {
                 return new TxMusic();
             case "kg":
                 return new KgMusic();
+            case "xm":
+                return new XmMusic();
             default:
                 return new TtMusic();
         }

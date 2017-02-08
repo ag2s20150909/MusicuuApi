@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TtMusic implements IMusic {
 
-
+    //天天支持无损和mv解析
     private static List<SongResult> search(String key, int page, int size) throws Exception {
         String url = "http://search.dongting.com/song/search?page=" + page + "&user_id=0&tid=0&app=ttpod&size=" + size + "&q=" + key + "&active=0";
         String s = NetUtil.GetHtmlContent(url);
@@ -129,8 +129,8 @@ public class TtMusic implements IMusic {
     private static String GetLrcUrl(String songId, String songName, String ArtistName) {
         try {
             //   SearchSong(songId);
-            String s = NetUtil.GetHtmlContent("http://lp.music.ttpod.com/lrc/down?artist=" + UrlEncode(ArtistName) +
-                    "&title=" + UrlEncode(songName) + "&song_id=" + songId);
+            String s = NetUtil.GetHtmlContent("http://lp.music.ttpod.com/lrc/down?artist=" + Util.UrlEncode(ArtistName) +
+                    "&title=" + Util.UrlEncode(songName) + "&song_id=" + songId);
             TiantianLrc kugouLrc = JSON.parseObject(s, TiantianLrc.class);
 
             return kugouLrc.getData().getLrc();
@@ -139,13 +139,6 @@ public class TtMusic implements IMusic {
         }
     }
 
-    private static String UrlEncode(String str) {
-        try {
-            return URLEncoder.encode(str, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            return "";
-        }
-    }
 
     @Override
     public List<SongResult> SongSearch(String key, int page, int size) {
