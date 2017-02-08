@@ -18,6 +18,7 @@ public class WyMusic implements IMusic {
     private static List<SongResult> search(String key, int page, int size) {
         try {
             String text = "{\"s\":\"" + key + "\",\"type\":1,\"offset\":" + (page - 1) * size + ",\"limit\":" + size + ",\"total\":true}";
+            System.out.println(text);
             String s = NetUtil.GetEncHtml("http://music.163.com/weapi/cloudsearch/get/web?csrf_token=", text, true);
             NeteaseDatas neteaseDatas = JSON.parseObject(s, NeteaseDatas.class);
             if (neteaseDatas == null) {

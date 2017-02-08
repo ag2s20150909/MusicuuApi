@@ -8,9 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8a3a1ef5-f4ed-4386-b873-383cad7f8286" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/KgMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/KgMusic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/NetUtil.java" afterPath="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/TxMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/TxMusic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/WyMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/WyMusic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SearchSong.java" afterPath="$PROJECT_DIR$/src/SearchSong.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,11 +29,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="WyMusic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MusicService/WyMusic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#11792#11793#0" expanded="true" />
+                <element signature="e#11838#11839#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NetUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+            <state relative-caret-position="540">
+              <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6658#6659#0" expanded="true" />
@@ -59,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TxMusic.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TxMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3931">
@@ -91,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchSong.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchSong.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SearchSong.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+            <state relative-caret-position="308">
+              <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,16 +135,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NOTICE.txt" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/fastjson-1.2.24.jar!/META-INF/NOTICE.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -217,13 +219,13 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/MusicService/Util.java" />
         <option value="$PROJECT_DIR$/src/MusicService/XmMusic.java" />
-        <option value="$PROJECT_DIR$/src/MusicService/WyMusic.java" />
         <option value="$PROJECT_DIR$/src/MusicService/TtMusic.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/MusicService/KgMusic.java" />
         <option value="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
-        <option value="$PROJECT_DIR$/src/SearchSong.java" />
         <option value="$PROJECT_DIR$/src/MusicService/TxMusic.java" />
+        <option value="$PROJECT_DIR$/src/MusicService/WyMusic.java" />
+        <option value="$PROJECT_DIR$/src/SearchSong.java" />
       </list>
     </option>
   </component>
@@ -942,7 +944,7 @@
       <workItem from="1486381169859" duration="6657000" />
       <workItem from="1486440089187" duration="15704000" />
       <workItem from="1486518232437" duration="13000000" />
-      <workItem from="1486536684853" duration="5422000" />
+      <workItem from="1486536684853" duration="7218000" />
     </task>
     <task id="LOCAL-00001" summary="完善网易云音乐解析">
       <created>1486222824661</created>
@@ -1063,11 +1065,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486535588803</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix bugs">
+      <created>1486543842060</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1486543842060</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76205000" />
+    <option name="totallyTimeSpent" value="78001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1133,7 +1142,8 @@
     <MESSAGE value="支持酷狗" />
     <MESSAGE value="添加虾米" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="fix bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1183,8 +1193,8 @@
           <caret line="82" column="71" selection-start-line="82" selection-start-column="71" selection-end-line="82" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11754#11755#0" expanded="true" />
-            <element signature="e#11800#11801#0" expanded="true" />
+            <element signature="e#11792#11793#0" expanded="true" />
+            <element signature="e#11838#11839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3057,18 +3067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/WyMusic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6336">
-          <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11754#11755#0" expanded="true" />
-            <element signature="e#11800#11801#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/XmMusic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3212">
@@ -3163,20 +3161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6658#6659#0" expanded="true" />
-            <element signature="e#6700#6701#0" expanded="true" />
-            <element signature="e#6747#6748#0" expanded="true" />
-            <element signature="e#6811#6812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/TtMusic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -3187,20 +3171,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SearchSong.java">
+    <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+        <state relative-caret-position="3931">
+          <caret line="197" column="9" selection-start-line="197" selection-start-column="9" selection-end-line="197" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
+    <entry file="file://$PROJECT_DIR$/src/MusicService/WyMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3931">
-          <caret line="197" column="9" selection-start-line="197" selection-start-column="9" selection-end-line="197" selection-end-column="9" />
+        <state relative-caret-position="301">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11792#11793#0" expanded="true" />
+            <element signature="e#11838#11839#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6658#6659#0" expanded="true" />
+            <element signature="e#6700#6701#0" expanded="true" />
+            <element signature="e#6747#6748#0" expanded="true" />
+            <element signature="e#6811#6812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SearchSong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
