@@ -68,26 +68,34 @@ public class TxMusic implements IMusic {
             String mid = !songsBean.getStrMediaMid().isEmpty() ? songsBean.getStrMediaMid() : songsBean.getMedia_mid();
             if (songsBean.getSize128() != 0) {
                 songResult.setBitRate("128K");
-
                 long v = new Random(System.currentTimeMillis()).nextLong();
                 String key = GetKey(String.valueOf(v));
-                songResult.setLqUrl("http://ws.stream.qqmusic.qq.com/M500" + mid + ".mp3?vkey=" + key + "&guid=" + v +
-                        "&fromtag=0");
+                if (!key.isEmpty()) {
+                    songResult.setLqUrl("http://ws.stream.qqmusic.qq.com/M500" + mid + ".mp3?vkey=" + key + "&guid=" + v +
+                            "&fromtag=0");
+                }
+
             }
             if (songsBean.getSizeogg() != 0) {
                 songResult.setBitRate("192K");
                 long v = new Random(System.currentTimeMillis()).nextLong();
                 String key = GetKey(String.valueOf(v));
-                songResult.setHqUrl("http://ws.stream.qqmusic.qq.com/O600" + mid + ".ogg?vkey=" + key + "&guid=" + v +
-                        "&fromtag=50");
+                if (!key.isEmpty()) {
+                    songResult.setHqUrl("http://ws.stream.qqmusic.qq.com/O600" + mid + ".ogg?vkey=" + key + "&guid=" + v +
+                            "&fromtag=50");
+                }
+
             }
             if (songsBean.getSize320() != 0) {
 
                 songResult.setBitRate("320K");
                 long v = new Random(System.currentTimeMillis()).nextLong();
                 String key = GetKey(String.valueOf(v));
-                songResult.setSqUrl("http://ws.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
-                        "&fromtag=50");
+                if (!key.isEmpty()) {
+                    songResult.setSqUrl("http://ws.stream.qqmusic.qq.com/M800" + mid + ".mp3?vkey=" + key + "&guid=" + v +
+                            "&fromtag=50");
+                }
+
 
             }
             if (songsBean.getSizeflac() != 0) {
@@ -108,73 +116,87 @@ public class TxMusic implements IMusic {
     }
 
     private static String GetMvUrl(String id, String quality) {
-        String html = NetUtil.GetHtmlContent("http://vv.video.qq.com/getinfo?vid=" + id + "&platform=11&charge=1&otype=json");
-        html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
-        TencentMvData tencentMvData = JSON.parseObject(html, TencentMvData.class);
-        if (tencentMvData.getFl() == null) {
-            return "";
-        }
-        List<TencentMvData.FlBean.FiBean> fi = tencentMvData.getFl().getFi();
-        HashMap<String, Integer> dic = new HashMap<>();
-        int count = fi.size();
-        for (TencentMvData.FlBean.FiBean fiBean : fi) {
-            dic.put(fiBean.getName(), fiBean.getId());
-        }
-        int mvID;
-        if (quality.equals("hd")) switch (count) {
-            case 4:
-                mvID = dic.get("fhd");
-                break;
-            case 3:
-                mvID = dic.get("shd");
-
-                break;
-            case 2:
-                mvID = dic.get("hd");
-                break;
-            default:
-                mvID = dic.get("sd");
-                break;
-        }
-        else {
-            switch (count) {
+        try {
+            String html = NetUtil.GetHtmlContent("http://vv.video.qq.com/getinfo?vid=" + id + "&platform=11&charge=1&otype=json");
+            html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
+            TencentMvData tencentMvData = JSON.parseObject(html, TencentMvData.class);
+            if (tencentMvData.getFl() == null) {
+                return "";
+            }
+            List<TencentMvData.FlBean.FiBean> fi = tencentMvData.getFl().getFi();
+            HashMap<String, Integer> dic = new HashMap<>();
+            int count = fi.size();
+            for (TencentMvData.FlBean.FiBean fiBean : fi) {
+                dic.put(fiBean.getName(), fiBean.getId());
+            }
+            int mvID;
+            if (quality.equals("hd")) switch (count) {
                 case 4:
-                    mvID = dic.get("shd");
+                    mvID = dic.get("fhd");
                     break;
                 case 3:
+                    mvID = dic.get("shd");
+
+                    break;
+                case 2:
                     mvID = dic.get("hd");
                     break;
-
                 default:
                     mvID = dic.get("sd");
                     break;
             }
+            else {
+                switch (count) {
+                    case 4:
+                        mvID = dic.get("shd");
+                        break;
+                    case 3:
+                        mvID = dic.get("hd");
+                        break;
+
+                    default:
+                        mvID = dic.get("sd");
+                        break;
+                }
+            }
+            String vkey = GetVkey(mvID, id);
+            String fn = id + ".p" + (mvID - 10000) + ".1.mp4";
+            return tencentMvData.getVl().getVi().get(0).getUl().getUi().get(0).getUrl() + fn + "?vkey=" + vkey;
+        } catch (Exception e) {
+            return "";
         }
-        String vkey = GetVkey(mvID, id);
-        String fn = id + ".p" + (mvID - 10000) + ".1.mp4";
-        return tencentMvData.getVl().getVi().get(0).getUl().getUi().get(0).getUrl() + fn + "?vkey=" + vkey;
+
     }
 
     private static String GetVkey(int id, String videoId) {
-        String fn = videoId + ".p" + (id - 10000) + ".1.mp4";
-        String url = "http://vv.video.qq.com/getkey?format=" + id + "&otype=json&vid=" + videoId +
-                "&platform=11&charge=1&filename=" + fn;
+        try {
+            String fn = videoId + ".p" + (id - 10000) + ".1.mp4";
+            String url = "http://vv.video.qq.com/getkey?format=" + id + "&otype=json&vid=" + videoId +
+                    "&platform=11&charge=1&filename=" + fn;
 
-        String html = NetUtil.GetHtmlContent(url);
-        if (html.isEmpty()) {
+            String html = NetUtil.GetHtmlContent(url);
+            if (html.isEmpty()) {
+                return "";
+            }
+            html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
+            TencentMvKey tencentMvKey = JSON.parseObject(html, TencentMvKey.class);
+            return tencentMvKey.getKey();
+        } catch (Exception e) {
             return "";
         }
-        html = html.substring(0, html.length() - 1).replace("QZOutputJson=", "");
-        TencentMvKey tencentMvKey = JSON.parseObject(html, TencentMvKey.class);
-        return tencentMvKey.getKey();
     }
 
     private static String GetKey(String time) {
-        String html =
-                NetUtil.GetHtmlContent("http://base.music.qq.com/fcgi-bin/fcg_musicexpress.fcg?json=3&guid=" + time);
-        html = html.replace("jsonCallback(", "").replace(");", "");
-        TencentGetKey tencentGetKey = JSON.parseObject(html, TencentGetKey.class);
-        return tencentGetKey.getKey();
+        try {
+            String html =
+                    NetUtil.GetHtmlContent("http://base.music.qq.com/fcgi-bin/fcg_musicexpress.fcg?json=3&guid=" + time);
+            html = html.replace("jsonCallback(", "").replace(");", "");
+            TencentGetKey tencentGetKey = JSON.parseObject(html, TencentGetKey.class);
+            return tencentGetKey.getKey();
+        } catch (Exception e) {
+            return "";
+        }
+
     }
 
     @Override

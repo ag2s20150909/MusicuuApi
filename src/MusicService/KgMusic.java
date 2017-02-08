@@ -28,6 +28,7 @@ public class KgMusic implements IMusic {
         }
         int totalsize = kugouDatas.getJSONObject("data").getIntValue("total");
         JSONArray data = kugouDatas.getJSONObject("data").getJSONArray("info");
+        System.out.println(JSON.toJSONString(data));
         return GetListByJson(data);
     }
 
@@ -55,6 +56,8 @@ public class KgMusic implements IMusic {
             songResult.setLength(Util.secTotime(length));
             if (!AlbumId.isEmpty() && Util.isNumber(AlbumId)) {
                 songResult.setPicUrl(GetUrl(AlbumId, "320", "jpg"));
+            } else {
+                songResult.setPicUrl(GetUrl(SongId, "320", "jpg"));
             }
             String s20hash = songsBean.getString("320hash");
             String sqHash = songsBean.getString("sqhash");
@@ -97,89 +100,107 @@ public class KgMusic implements IMusic {
     }
 
     private static String GetUrl(String id, String quality, String format) {
-        String html;
-        if (format.equals("jpg")) {
-            html = NetUtil.GetHtmlContent("http://ioscdn.kugou.com/api/v3/album/info?albumid=" + id + "&version=7910");
-            if (html.isEmpty()) {
-                return "";
-            }
-            KugouPic kugouPic = JSON.parseObject(html, KugouPic.class);
-            if (kugouPic.getData() == null) {
-                return "";
-            }
-            return kugouPic.getData().getImgurl().replace("{size}", "480");
-        }
-
-        if (format.equals("lrc")) {
-            html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=" + id);
-
-            if (html.contains("hash error") || html.isEmpty()) {
-                return "";
-            }
-            KugouLrc kugouLrc = JSON.parseObject(html, KugouLrc.class);
-            String songName = kugouLrc.getSongName();
-            String len = kugouLrc.getTimeLength() + "000";
-            if (format.equals("lrc")) {
-                html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/krc.php?cmd=100&keyword=" + songName +
-                        "&hash=" + id + "&timelength=" + len + "&d=0.38664927426725626", false);
+        try {
+            String html;
+            if (format.equals("jpg") && Util.isNumber(id)) {
+                html = NetUtil.GetHtmlContent("http://ioscdn.kugou.com/api/v3/album/info?albumid=" + id + "&version=7910");
                 if (html.isEmpty()) {
                     return "";
                 }
-//                System.out.println(html);
-                return "[ti:" + songName + "]\n[by: FM]\n" + html;
+                KugouPic kugouPic = JSON.parseObject(html, KugouPic.class);
+                if (kugouPic.getData() == null) {
+                    return "";
+                }
+                return kugouPic.getData().getImgurl().replace("{size}", "480");
+            } else if (format.equals("jpg")) {
+                html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=" + id);
+                if (html.isEmpty() || html.contains("hash error")) {
+                    return "";
+                }
+                JSONObject json = JSON.parseObject(html);
+                String songName = json.getString("fileName");
+                html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/getSingerHead_new.php?singerName=" + songName.split("-")[0].trim().toString() + "&size=480");
+                JSONObject imgJson = JSON.parseObject(html);
+                String imgUrl = imgJson.getString("url");
+                if (imgUrl.isEmpty()) {
+                    return "";
+                }
+                return imgUrl;
             }
 
-        }
-        if (format.equals("mp3")) {
-            String url = "http://trackercdn.kugou.com/i/?key=" + Util.getMD5(id + "kgcloud") + "&cmd=4&acceptMp3=1&hash=" + id + "&pid=1";
-            html = NetUtil.GetHtmlContent(url);
-            if (html.contains("Bad key")) {
-                return "";
+            if (format.equals("lrc")) {
+                html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=" + id);
+
+                if (html.contains("hash error") || html.isEmpty()) {
+                    return "";
+                }
+                KugouLrc kugouLrc = JSON.parseObject(html, KugouLrc.class);
+                String songName = kugouLrc.getSongName();
+                String len = kugouLrc.getTimeLength() + "000";
+                if (format.equals("lrc")) {
+                    html = NetUtil.GetHtmlContent("http://m.kugou.com/app/i/krc.php?cmd=100&keyword=" + songName +
+                            "&hash=" + id + "&timelength=" + len + "&d=0.38664927426725626", false);
+                    if (html.isEmpty()) {
+                        return "";
+                    }
+//                System.out.println(html);
+                    return "[ti:" + songName + "]\n[by: FM]\n" + html;
+                }
+
             }
-            KugouMp3Url kugouMp3Url = JSON.parseObject(html, KugouMp3Url.class);
-            return kugouMp3Url.getUrl();
-        }
-        if (format.equals("mp4")) {
-            String key = Util.getMD5(id + "kugoumvcloud");
-            html = NetUtil.GetHtmlContent("http://trackermv.kugou.com/interface/index?cmd=100&pid=6&ext=mp4&hash=" + id +
-                    "&quality=-1&key=" + key + "&backupdomain=1");
+            if (format.equals("mp3")) {
+                String url = "http://trackercdn.kugou.com/i/?key=" + Util.getMD5(id + "kgcloud") + "&cmd=4&acceptMp3=1&hash=" + id + "&pid=1";
+                html = NetUtil.GetHtmlContent(url);
+                if (html.contains("Bad key")) {
+                    return "";
+                }
+                KugouMp3Url kugouMp3Url = JSON.parseObject(html, KugouMp3Url.class);
+                return kugouMp3Url.getUrl();
+            }
+            if (format.equals("mp4")) {
+                String key = Util.getMD5(id + "kugoumvcloud");
+                html = NetUtil.GetHtmlContent("http://trackermv.kugou.com/interface/index?cmd=100&pid=6&ext=mp4&hash=" + id +
+                        "&quality=-1&key=" + key + "&backupdomain=1");
 //            /interface/index?cmd=100&pid=6&ext=mp4&hash=1f1668e15ee298b4d3ee630cef0c6a90&quality=-1&key=0cda6579ff6a8822d5d5a9e504bbcc57&backupdomain=1
-            if (html.contains("Bad key")) {
-                return "";
+                if (html.contains("Bad key")) {
+                    return "";
+                }
+                KugouMv kugouMv = JSON.parseObject(html, KugouMv.class);
+                KugouMv.MvdataBean mvdata = kugouMv.getMvdata();
+                if (quality.equals("hd")) {
+                    String rq = mvdata.getRq().getDownurl();
+                    if (rq != null && !rq.isEmpty()) {
+                        return rq;
+                    }
+                    String sq = mvdata.getSq().getDownurl();
+                    if (sq != null && !sq.isEmpty()) {
+                        return sq;
+                    }
+                    String hd = mvdata.getHd().getDownurl();
+                    if (hd != null && !hd.isEmpty()) {
+                        return hd;
+                    }
+                    String sd = mvdata.getSd().getDownurl();
+                    if (sd != null && !sd.isEmpty()) {
+                        return sd;
+                    }
+                } else {
+                    String sq = mvdata.getSq().getDownurl();
+                    if (sq != null && !sq.isEmpty()) {
+                        return sq;
+                    }
+                    String hd = mvdata.getHd().getDownurl();
+                    if (hd != null && !hd.isEmpty()) {
+                        return hd;
+                    }
+                    String sd = mvdata.getSd().getDownurl();
+                    if (sd != null && !sd.isEmpty()) {
+                        return sd;
+                    }
+                }
             }
-            KugouMv kugouMv = JSON.parseObject(html, KugouMv.class);
-            KugouMv.MvdataBean mvdata = kugouMv.getMvdata();
-            if (quality.equals("hd")) {
-                String rq = mvdata.getRq().getDownurl();
-                if (rq != null && !rq.isEmpty()) {
-                    return rq;
-                }
-                String sq = mvdata.getSq().getDownurl();
-                if (sq != null && !sq.isEmpty()) {
-                    return sq;
-                }
-                String hd = mvdata.getHd().getDownurl();
-                if (hd != null && !hd.isEmpty()) {
-                    return hd;
-                }
-                String sd = mvdata.getSd().getDownurl();
-                if (sd != null && !sd.isEmpty()) {
-                    return sd;
-                }
-            } else {
-                String sq = mvdata.getSq().getDownurl();
-                if (sq != null && !sq.isEmpty()) {
-                    return sq;
-                }
-                String hd = mvdata.getHd().getDownurl();
-                if (hd != null && !hd.isEmpty()) {
-                    return hd;
-                }
-                String sd = mvdata.getSd().getDownurl();
-                if (sd != null && !sd.isEmpty()) {
-                    return sd;
-                }
-            }
+        } catch (Exception e) {
+
         }
         return "";
     }

@@ -20,7 +20,6 @@ public class NetUtil {
     private static final OkHttpClient client = new OkHttpClient();
     private static final MediaType Content_Type = MediaType.parse("application/x-www-form-urlencoded");
     private static final Headers headers = new Headers.Builder()
-            .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
             .add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
             .build();
     final static private String modulus = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7" +
@@ -167,7 +166,22 @@ public class NetUtil {
 
     //based on [darknessomi/musicbox](https://github.com/darknessomi/musicbox)
     private static String createSecretKey(int i) {
-        return RandomStringUtils.random(i, "0123456789abcde");
+        return getRandomString(16);
+    }
+
+    private static int getRandom(int count) {
+        return (int) Math.round(Math.random() * (count));
+    }
+
+    private static String string = "0123456789abcde";
+
+    private static String getRandomString(int length) {
+        StringBuffer sb = new StringBuffer();
+        int len = string.length();
+        for (int i = 0; i < length; i++) {
+            sb.append(string.charAt(getRandom(len - 1)));
+        }
+        return sb.toString();
     }
 
     public static void init(SongResult result) {
