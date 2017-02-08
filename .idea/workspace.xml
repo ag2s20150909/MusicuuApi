@@ -126,7 +126,7 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
-              <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -878,7 +878,7 @@
       <workItem from="1486344736725" duration="20379000" />
       <workItem from="1486381169859" duration="6657000" />
       <workItem from="1486440089187" duration="15704000" />
-      <workItem from="1486518232437" duration="11904000" />
+      <workItem from="1486518232437" duration="11976000" />
     </task>
     <task id="LOCAL-00001" summary="完善网易云音乐解析">
       <created>1486222824661</created>
@@ -971,11 +971,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486535116228</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update">
+      <created>1486535270989</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1486535270989</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69687000" />
+    <option name="totallyTimeSpent" value="69759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1036,9 +1043,9 @@
     <MESSAGE value="添加QQ音乐，暂时无法解析flac和192K" />
     <MESSAGE value="支持QQ音乐192K，无损解析和天天动听无损解析" />
     <MESSAGE value="支持酷狗" />
-    <MESSAGE value="update" />
     <MESSAGE value="添加虾米" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加虾米" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4909,7 +4916,7 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding />
         </state>
       </provider>
