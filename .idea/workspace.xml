@@ -7,15 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a3a1ef5-f4ed-4386-b873-383cad7f8286" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/commons-lang3-3.5.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/KgMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/KgMusic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/NetUtil.java" afterPath="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/SongResult.java" afterPath="$PROJECT_DIR$/src/MusicService/SongResult.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/TtMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/TtMusic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/TxMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/TxMusic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/WyMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/WyMusic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicService/XmMusic.java" afterPath="$PROJECT_DIR$/src/MusicService/XmMusic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SearchSong.java" afterPath="$PROJECT_DIR$/src/SearchSong.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -38,8 +37,8 @@
       <file leaf-file-name="WyMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/WyMusic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="61" column="48" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
+            <state relative-caret-position="198">
+              <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XmMusic.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="XmMusic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MusicService/XmMusic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+            <state relative-caret-position="165">
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,8 +61,8 @@
       <file leaf-file-name="NetUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="270" column="5" selection-start-line="186" selection-start-column="3" selection-end-line="270" selection-end-column="5" />
+            <state relative-caret-position="361">
+              <caret line="183" column="5" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,8 +73,8 @@
       <file leaf-file-name="TtMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/TtMusic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+            <state relative-caret-position="374">
+              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,8 +85,8 @@
       <file leaf-file-name="TxMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="43" column="48" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+            <state relative-caret-position="231">
+              <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,11 +106,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KgMusic.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SongResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MusicService/SongResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KgMusic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MusicService/KgMusic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="148" column="17" selection-start-line="148" selection-start-column="17" selection-end-line="148" selection-end-column="17" />
+            <state relative-caret-position="217">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,6 +209,7 @@
         <option value="$PROJECT_DIR$/src/MusicService/Util.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/SearchSong.java" />
+        <option value="$PROJECT_DIR$/src/MusicService/SongResult.java" />
         <option value="$PROJECT_DIR$/src/MusicService/NetUtil.java" />
         <option value="$PROJECT_DIR$/src/MusicService/KgMusic.java" />
         <option value="$PROJECT_DIR$/src/MusicService/TtMusic.java" />
@@ -850,7 +860,7 @@
       <workItem from="1486518232437" duration="13000000" />
       <workItem from="1486536684853" duration="7828000" />
       <workItem from="1486606381454" duration="2541000" />
-      <workItem from="1486690235526" duration="1402000" />
+      <workItem from="1486690235526" duration="2331000" />
     </task>
     <task id="LOCAL-00001" summary="完善网易云音乐解析">
       <created>1486222824661</created>
@@ -985,11 +995,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486546769085</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="在bean序列化时增加非空判断，避免产生空指针问题">
+      <created>1486691688909</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1486691688909</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82554000" />
+    <option name="totallyTimeSpent" value="83483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1003,7 +1020,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31428573" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35767195" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1055,6 +1072,7 @@
     <MESSAGE value="支持酷狗" />
     <MESSAGE value="添加虾米" />
     <MESSAGE value="fix bugs" />
+    <MESSAGE value="在bean序列化时增加非空判断，避免产生空指针问题" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
@@ -1072,12 +1090,6 @@
           <line>214</line>
           <properties />
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MusicService/NetUtil.java</url>
-          <line>210</line>
-          <properties />
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="25" />
@@ -2322,14 +2334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/SongResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/MusicService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -2357,6 +2361,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8815#8816#0" expanded="true" />
+            <element signature="e#8844#8845#0" expanded="true" />
+            <element signature="e#8921#8922#0" expanded="true" />
+            <element signature="e#8963#8964#0" expanded="true" />
+            <element signature="e#8991#8992#0" expanded="true" />
+            <element signature="e#9043#9044#0" expanded="true" />
+            <element signature="e#9077#9078#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2374,6 +2388,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2433,10 +2448,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="183" column="5" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/SongResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MusicService/KgMusic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/TtMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+        <state relative-caret-position="374">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2445,8 +2488,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/TxMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="43" column="48" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+        <state relative-caret-position="231">
+          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2455,8 +2498,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/WyMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="61" column="48" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
+        <state relative-caret-position="198">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2465,28 +2508,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MusicService/XmMusic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/NetUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="270" column="5" selection-start-line="186" selection-start-column="3" selection-end-line="270" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MusicService/KgMusic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="148" column="17" selection-start-line="148" selection-start-column="17" selection-end-line="148" selection-end-column="17" />
+        <state relative-caret-position="165">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
