@@ -1,7 +1,6 @@
 package MusicService;
 
 import okhttp3.*;
-import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -184,8 +183,8 @@ public class NetUtil {
         return sb.toString();
     }
 
-    public static void init(SongResult result) {
-        //初始化，方便反序列化
+
+    public static void initNullElement(SongResult result) {
         result.setLqUrl("");
         result.setMvHdUrl("");
         result.setMvLdUrl("");
@@ -205,5 +204,69 @@ public class NetUtil {
         result.setSongLink("");
         result.setSongId("");
         result.setSongName("");
+    }
+
+    public static void removeNullElement(SongResult result) {
+        //初始化，方便反序列化
+        if (result.getLqUrl() == null) {
+            result.setLqUrl("");
+        }
+
+        if (result.getMvHdUrl() == null) {
+            result.setMvHdUrl("");
+        }
+
+        if (result.getMvLdUrl() == null) {
+            result.setMvLdUrl("");
+        }
+        if (result.getAlbumId() == null) {
+            result.setAlbumId("");
+        }
+        if (result.getAlbumName() == null) {
+            result.setAlbumName("");
+        }
+        if (result.getArtistId() == null) {
+            result.setArtistId("");
+        }
+
+        if (result.getArtistName() == null) {
+            result.setArtistName("");
+        }
+        if (result.getBitRate() == null) {
+            result.setBitRate("128K");
+        }
+        if (result.getFlacUrl() == null) {
+            result.setFlacUrl("");
+        }
+        if (result.getHqUrl() == null) {
+            result.setHqUrl("");
+        }
+        if (result.getSqUrl() == null) {
+            result.setSqUrl("");
+        }
+        if (result.getLength() == null) {
+            result.setLength("");
+        }
+        if (result.getLrcUrl() == null) {
+            result.setLrcUrl("");
+        }
+        if (result.getType() == null) {
+            result.setType("");
+        }
+        if (result.getPicUrl() == null) {
+            result.setPicUrl("");
+        }
+        if (result.getMvId() == null) {
+            result.setMvId("");
+        }
+        if (result.getSongLink() == null) {
+            result.setSongLink("");
+        }
+        if (result.getSongId() == null) {
+            result.setSongId("");
+        }
+        if (result.getSongName() == null) {
+            result.setSongName("");
+        }
     }
 }
