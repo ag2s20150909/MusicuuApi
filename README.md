@@ -13,6 +13,7 @@
 2017-2-8 --
 支持虾米，不支持解析mv和无损
 
+声明：本项目只能用于学习交流，请勿用于任何商业或者收费项目
 ```
                         GNU GENERAL PUBLIC LICENSE
                          Version 3, 29 June 2007
