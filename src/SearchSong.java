@@ -12,7 +12,6 @@ import java.util.List;
 public class SearchSong {
     public static void main(String[] args) throws UnsupportedEncodingException {
 
-
         List<SongResult> wy = MusicService.GetMusic("kg").SongSearch("周杰伦", 1, 10);
         SearchResult searchResult = new SearchResult();
         if (wy == null) {
